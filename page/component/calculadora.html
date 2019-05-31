@@ -1,0 +1,75 @@
+<div class="col-lg-12 mb-4">  
+    <!-- Approach -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Renda Fixa</h6>
+        </div>
+        <div class="card-body">
+            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
+            <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
+            <br>
+            <form class="form-horizontal">
+                <legend>Calculadora</legend>
+                
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="periodoRendimento">Período Rendimento</label>
+                        <select id="periodoRendimento" name="periodoRendimento" class="form-control">
+                        <option value="1">Ano</option>
+                        <option value="2">Mês</option>
+                        <option value="3">Dia</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="rendimento">Rendimento (%)</label>  
+                        <input id="rendimento" name="rendimento" 
+                            type="number" placeholder="Percentual de rendimento" 
+                            class="form-control input-md">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="valorInicial">Valor Inicial (R$)</label>  
+                        <input id="valorInicial" name="valorInicial" type="number" 
+                            placeholder="1000" class="form-control input-md"
+                            title="Informe o valor inicial do investimento">
+                    </div>
+
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="incrementoMensal">Incremento Mensal (R$)</label>  
+                        <input id="incrementoMensal" name="incrementoMensal" 
+                            type="number" placeholder="250" class="form-control input-md" 
+                            title="Valor que será incrementado todo mês">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="anos">Anos</label>  
+                        <input id="anos" name="anos" type="number" 
+                            placeholder="3" class="form-control input-md"
+                            title="Tempo de duração do investimento em anos">
+                    </div>
+
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="ir">IR (%)</label>  
+                        <input id="ir" name="ir" 
+                            type="number" placeholder="15" class="form-control input-md" 
+                            title="Informe o valor de Imposto de Renda que será cobrado">
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-12 mb-3 mb-sm-0">
+                        <button type="button" id="calcular" name="calcular" 
+                            class="btn btn-primary"> Calcular </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/calculadora.js"></script>
