@@ -8,6 +8,13 @@ var valoresCalculados = {
 
 (function($) {
     "use strict"; // Start of use strict
+    $('#valorInicial').mask("#.##0,00", {reverse: true});
+    $('#incrementoMensal').mask("#.##0,00", {reverse: true});
+    $('#rendimento').mask('##0,00', {reverse: true});
+    $('#anos').mask("000");
+    $('#ir').mask('##0,00', {reverse: true});
+    $('#valorInicial').mask("#.##0,00", {reverse: true});
+    $('#valorInicial').mask("#.##0,00", {reverse: true});
 
     $('#calcular').click(function(){
         $("#loadResultado").load("page/component/resultado.html");
