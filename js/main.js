@@ -15,6 +15,13 @@ function formatarMonetario(valor) {
     return 'R$ ' + valor.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }
 
+function convertStringToFloat(valorString){
+    if(valorString==null || valorString=="") return 0.0;
+
+    return parseFloat(valorString.replace(".", "").replace(",", "."));
+}
+
+// PEGA PARAMETROS INFORMADOS PELA URL
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
