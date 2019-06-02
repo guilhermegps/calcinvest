@@ -1,5 +1,7 @@
 (function($) {
     "use strict"; // Start of use strict
+    $("#loadSidebar").load("page/component/sidebar.html");
+    $("#loadFooter").load("page/component/footer.html");
     let page = getUrlParameter('page');
     if(page)
         $("#loadPage").load(`page/${page}.html`);
