@@ -58,7 +58,8 @@ var valoresCalculados;
                 valorBase=objAux.valorTotalLiquido + incrementoMensal;
                 contDias=0;
             } else if(dataBase.getTime() == dataTermino.getTime()){ // dias do último mês
-                let rendiMensalBruto = porcentagemDe(pcntRendMensal, valorBase);
+                let pcntRendDiaria = (pcntRendMensal/30);
+                let rendiMensalBruto = porcentagemDe(pcntRendDiaria*contDias, valorBase);
                 let IRMensal = porcentagemDe(ir, rendiMensalBruto);
                 let rendiMensalLiquido = rendiMensalBruto - IRMensal;
     
