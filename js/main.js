@@ -16,7 +16,7 @@ function formatarMonetario(valor) {
 }
 
 function convertStringToFloat(valorString){
-    if(valorString==null || valorString=="") return 0.0;
+    if(valorString==null || valorString=="") return 0.00;
 
     return parseFloat(valorString.replace(".", "").replace(",", "."));
 }

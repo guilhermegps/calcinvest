@@ -1,15 +1,8 @@
-var valoresCalculados = {
-    valorTotalbruto: 0,
-    totalInvestido: 0,
-    lucroBruto: 0,
-    lucroLiquido: 0,
-    valorTotalLiquido: 0,
-    IRPago: 0
-};
-const ANO = 1; const MES = 2;
+var valoresCalculados;
 
 (function($) {
     "use strict"; // Start of use strict
+    
     $('#valorInicial').mask("#.##0,00", {reverse: true});
     $('#incrementoMensal').mask("#.##0,00", {reverse: true});
     $('#rendimento').mask('##0,00', {reverse: true});
@@ -24,7 +17,16 @@ const ANO = 1; const MES = 2;
     });
 
     function calcular(){
-        let objAux = valoresCalculados;
+        const ANO = 1; const MES = 2;
+    
+        let objAux = {
+            valorTotalbruto: 0,
+            totalInvestido: 0,
+            lucroBruto: 0,
+            lucroLiquido: 0,
+            valorTotalLiquido: 0,
+            IRPago: 0
+        };
         let periodoRend = convertStringToFloat($('#periodoRendimento').val());
         let valorIni = convertStringToFloat($('#valorInicial').val());
         let incrementoMensal = convertStringToFloat($('#incrementoMensal').val());
@@ -40,29 +42,28 @@ const ANO = 1; const MES = 2;
         objAux.totalInvestido = valorIni;
         let valorBase = valorIni;
         let contDias = 0;
-        while(dataBase < dataTermino){
+        while(dataBase.getTime() < dataTermino.getTime()){
             dataBase.setDate(dataBase.getDate() + 1);
+            dataBase = removerHHmmss(dataBase);
             contDias++;
             if(contDias==30){ // A cada mês
                 let rendiMensalBruto = porcentagemDe(pcntRendMensal, valorBase);
                 let IRMensal = porcentagemDe(ir, rendiMensalBruto);
                 let rendiMensalLiquido = rendiMensalBruto - IRMensal;
     
-                objAux.valorTotalLiquido+=valorBase+rendiMensalLiquido;
+                objAux.valorTotalLiquido=valorBase+rendiMensalLiquido;
                 objAux.IRPago+=IRMensal;
                 objAux.totalInvestido+=incrementoMensal;
     
                 valorBase=objAux.valorTotalLiquido + incrementoMensal;
                 contDias=0;
-            } else if(dataBase == dataTermino){ // dias do último mês
-                let pcntRendDiaria = (pcntRendMensal/30);
-                let rendiMensalBruto = porcentagemDe(pcntRendDiaria*contDias, valorBase);
+            } else if(dataBase.getTime() == dataTermino.getTime()){ // dias do último mês
+                let rendiMensalBruto = porcentagemDe(pcntRendMensal, valorBase);
                 let IRMensal = porcentagemDe(ir, rendiMensalBruto);
                 let rendiMensalLiquido = rendiMensalBruto - IRMensal;
     
-                objAux.valorTotalLiquido+=rendiMensalLiquido;
+                objAux.valorTotalLiquido=valorBase+rendiMensalLiquido;
                 objAux.IRPago+=IRMensal;
-                objAux.totalInvestido+=incrementoMensal;
             }
         }
     
