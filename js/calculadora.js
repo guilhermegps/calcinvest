@@ -40,32 +40,27 @@ var valoresCalculados;
         let pcntRendMensal = (periodoRend==ANO) ? rendimento/12 : rendimento;
     
         objAux.totalInvestido = valorIni;
-        let valorBase = valorIni;
+        objAux.valorTotalLiquido = valorIni;
         let contDias = 0;
+        let diasCorridos = diferencaEntreDatas(dataBase, dataTermino);
+        let pcntRendDiaria = (pcntRendMensal/30);
         while(dataBase.getTime() < dataTermino.getTime()){
-            dataBase.setDate(dataBase.getDate() + 1);
-            dataBase = removerHHmmss(dataBase);
             contDias++;
-            if(contDias==30){ // A cada mês
-                let rendiMensalBruto = porcentagemDe(pcntRendMensal, valorBase);
-                let IRMensal = porcentagemDe(ir, rendiMensalBruto);
-                let rendiMensalLiquido = rendiMensalBruto - IRMensal;
+            let rendiDiarioBruto = porcentagemDe(pcntRendDiaria, objAux.valorTotalLiquido);
+            let IRDiario = porcentagemDe(ir, rendiDiarioBruto);
+            let rendiDiarioLiquido = rendiDiarioBruto - IRDiario;
     
-                objAux.valorTotalLiquido=valorBase+rendiMensalLiquido;
-                objAux.IRPago+=IRMensal;
+            objAux.valorTotalLiquido+=rendiDiarioLiquido;
+            objAux.IRPago+=IRDiario;
+            if(contDias==30){ // A cada mês
                 objAux.totalInvestido+=incrementoMensal;
     
-                valorBase=objAux.valorTotalLiquido + incrementoMensal;
+                objAux.valorTotalLiquido+=incrementoMensal;
                 contDias=0;
-            } else if(dataBase.getTime() == dataTermino.getTime()){ // dias do último mês
-                let pcntRendDiaria = (pcntRendMensal/30);
-                let rendiMensalBruto = porcentagemDe(pcntRendDiaria*contDias, valorBase);
-                let IRMensal = porcentagemDe(ir, rendiMensalBruto);
-                let rendiMensalLiquido = rendiMensalBruto - IRMensal;
-    
-                objAux.valorTotalLiquido=valorBase+rendiMensalLiquido;
-                objAux.IRPago+=IRMensal;
             }
+
+            dataBase.setDate(dataBase.getDate() + 1);
+            dataBase = removerHHmmss(dataBase);
         }
     
         objAux.valorTotalbruto = objAux.valorTotalLiquido + objAux.IRPago;
@@ -86,5 +81,15 @@ var valoresCalculados;
         data.setSeconds(0);
     
         return data;
+    }
+
+    function truncValor(valor, casas){
+        return Number(valor.toFixed(casas));
+    }
+
+    // Diferença entre as datas em dias
+    function diferencaEntreDatas(date1, date2){
+        let timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        return Math.ceil(timeDiff / (1000 * 3600 * 24)); 
     }
 })(jQuery); // End of use strict
