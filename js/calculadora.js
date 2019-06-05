@@ -17,8 +17,6 @@ var valoresCalculados;
     });
 
     function calcular(){
-        const ANO = 1; const MES = 2;
-    
         let objAux = {
             valorTotalbruto: 0,
             totalInvestido: 0,
@@ -37,30 +35,26 @@ var valoresCalculados;
         let dataBase = removerHHmmss(new Date());
         let dataTermino = removerHHmmss(new Date());
         dataTermino.setFullYear(dataBase.getFullYear() + anos);
-        let pcntRendMensal = (periodoRend==ANO) ? rendimento/12 : rendimento;
+        let diasCorridos = diferencaEntreDatas(dataBase, dataTermino)-1;
+        // let meses = (diasCorridos/anos)/12;
     
         objAux.totalInvestido = valorIni;
         objAux.valorTotalLiquido = valorIni;
-        let contDias = 0;
-        let diasCorridos = diferencaEntreDatas(dataBase, dataTermino);
-        let pcntRendDiaria = (pcntRendMensal/30);
-        while(dataBase.getTime() < dataTermino.getTime()){
-            contDias++;
-            let rendiDiarioBruto = porcentagemDe(pcntRendDiaria, objAux.valorTotalLiquido);
-            let IRDiario = porcentagemDe(ir, rendiDiarioBruto);
-            let rendiDiarioLiquido = rendiDiarioBruto - IRDiario;
-    
-            objAux.valorTotalLiquido+=rendiDiarioLiquido;
-            objAux.IRPago+=IRDiario;
-            if(contDias==30){ // A cada mês
-                objAux.totalInvestido+=incrementoMensal;
-    
-                objAux.valorTotalLiquido+=incrementoMensal;
-                contDias=0;
+        let rendimentoRestante = 0;
+        for (let i = 1; i < diasCorridos; i++) {
+            if(i%periodoRend==0){
+                calculaRendimento(rendimento);
+                if((diasCorridos-i)<periodoRend){
+                    rendimentoRestante = (rendimento/periodoRend) * (diasCorridos-i);
+                }
+            } else if(rendimentoRestante>0){
+                calculaRendimento(rendimentoRestante);
             }
-
-            dataBase.setDate(dataBase.getDate() + 1);
-            dataBase = removerHHmmss(dataBase);
+            
+            if(i%30==0){ // A cada mês
+                objAux.totalInvestido+=incrementoMensal;
+                objAux.valorTotalLiquido+=incrementoMensal;
+            } 
         }
     
         objAux.valorTotalbruto = objAux.valorTotalLiquido + objAux.IRPago;
@@ -68,6 +62,15 @@ var valoresCalculados;
         objAux.lucroLiquido = objAux.valorTotalLiquido - objAux.totalInvestido;
     
         valoresCalculados = objAux;
+
+        function calculaRendimento(rendi){
+            let rendimentoBruto = porcentagemDe(rendi, objAux.valorTotalLiquido);
+            let IRPeriodo = porcentagemDe(ir, rendimentoBruto);
+            let rendimentoLiquido = rendimentoBruto - IRPeriodo;
+    
+            objAux.valorTotalLiquido+=rendimentoLiquido;
+            objAux.IRPago+=IRPeriodo;
+        }
     }
     
     function porcentagemDe(porcentagem, valor){
@@ -81,10 +84,6 @@ var valoresCalculados;
         data.setSeconds(0);
     
         return data;
-    }
-
-    function truncValor(valor, casas){
-        return Number(valor.toFixed(casas));
     }
 
     // Diferença entre as datas em dias
