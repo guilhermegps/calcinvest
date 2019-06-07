@@ -36,3 +36,15 @@ function getUrlParameter(sParam) {
         }
     }
 };
+
+function valueOfIR(diasCorridos){
+    if (diasCorridos<181) {
+        return 22.5;
+    } else if (diasCorridos<361) {
+        return 20;
+    } else if (diasCorridos<721) {
+        return 17.5;
+    } 
+    
+    return 15;
+}
