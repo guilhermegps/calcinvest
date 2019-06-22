@@ -15,9 +15,9 @@
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="periodoRendimento">Período Rendimento</label>
                         <select id="periodoRendimento" name="periodoRendimento" class="form-control">
-                            <option value="364">Ano</option>
-                            <option value="30">Mês</option>
-                            <option value="1">Dia</option>
+                            <option value="1">Ano</option>
+                            <option value="2">Mês</option>
+                            <option value="3">Dia</option>
                         </select>
                     </div>
                     
@@ -54,25 +54,28 @@
                     </div>
 
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label">Juros Regressivos?</label> 
+                        <label class="col-md-12 control-label">IR Regressivo?</label> 
                         <label class="radio-inline" for="radios-0">
-                            <input type="radio" class="input-md" name="radios" id="radios-0" value="true" checked="checked">
+                            <input type="radio" class="input-md" name="radios" id="radios-sim" value="true" checked="checked">
                             Sim
                         </label> 
                         <label class="radio-inline" for="radios-1">
-                            <input type="radio" class="input-md" name="radios" id="radios-1" value="false">
+                            <input type="radio" class="input-md" name="radios" id="radios-nao" value="false">
                             Não
                         </label>
                     </div>
                 </div>
                 
                 <div class="form-group row">
-                    <div class="col-md-6 mb-3 mb-sm-0">
+                    <div class="col-md-6 mb-3 mb-sm-0" id="divIR" style="display: none">
                         <label class="col-md-12 control-label" for="ir">IR (%)</label>  
                         <input id="ir" name="ir" 
                             type="text" placeholder="15" class="form-control input-md" 
                             title="Informe o valor de Imposto de Renda que será cobrado">
                     </div>
+                </div>
+                
+                <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <button type="button" id="calcular" name="calcular" 
                             class="btn btn-info"> Calcular </button>

@@ -5,9 +5,16 @@ var valoresCalculados;
     
     $('#valorInicial').mask("#.##0,00", {reverse: true});
     $('#incrementoMensal').mask("#.##0,00", {reverse: true});
-    $('#rendimento').mask('##0,00', {reverse: true});
+    $('#rendimento').mask('##0,000', {reverse: true});
     $('#anos').mask("000");
     $('#ir').mask('##0,00', {reverse: true});
+    $("input[name='radios']").click(()=>{
+        if($('#radios-sim').prop( "checked" )){
+            $('#divIR').hide();
+        } else{
+            $('#divIR').show();
+        }
+    });
 
     $('#calcular').click(function(){
         calcular();
@@ -31,60 +38,66 @@ var valoresCalculados;
         let rendimento = convertStringToFloat($('#rendimento').val());
         let anos = convertStringToFloat($('#anos').val());
         let ir = convertStringToFloat($('#ir').val());
+        let jurosRegressivo = $('#radios-sim').prop( "checked" );
         
         let dataBase = removerHHmmss(new Date());
         let dataTermino = removerHHmmss(new Date());
         dataTermino.setFullYear(dataBase.getFullYear() + anos);
-        let diasTotais = diferencaEntreDatas(dataBase, dataTermino)-1;
+        let diasTotais = diferencaEntreDatas(dataBase, dataTermino);
+        let tempoRendimento = anos;
+        if(periodoRend==2) tempoRendimento = anos*12;
+        else if(periodoRend==3) tempoRendimento = diasTotais;
     
+        ir = (jurosRegressivo) ? valueOfIR(diasTotais) : ir;
+        objAux.valorTotalbruto = calcularJurosCompostos(valorIni, rendimento, tempoRendimento);
         objAux.totalInvestido = valorIni;
-        objAux.valorTotalLiquido = valorIni;
-        let rendimentoRestante = 0;
-        let aportes=[];
-        ir = (true) ? valueOfIR(diasTotais) : ir;
-        let mes = (diasTotais/anos) / 12;
-        for (let i = 1; i < diasTotais; i++) {
-            let diasRestantes = (diasTotais-i);
+        objAux.IRPago = porcentagemDe(ir, objAux.valorTotalbruto-valorIni);
     
-            if(i%periodoRend==0){ // Render pelo período determinado
-                calculaRendimento(rendimento, objAux.valorTotalLiquido, ir);
-                if((diasTotais-i)<periodoRend){
-                    rendimentoRestante = (rendimento/periodoRend) * diasRestantes;
-                }
-            } else if(rendimentoRestante>0){
-                calculaRendimento(rendimentoRestante, objAux.valorTotalLiquido, ir);
-            }
+        let mesesTotais = anos*12;
+        let diasPorMes = (diasTotais/mesesTotais);
+        let rentabilidadeMes = (rendimento/12);
+        if(periodoRend==2) rentabilidadeMes = rendimento;
+        else if(periodoRend==3) rentabilidadeMes = rendimento * diasPorMes;
+        for(let i=1; i<=mesesTotais; i++){
+            let mesesRestantes = (mesesTotais-i);
+            let rendimentoBruto = calcularJurosCompostos(
+                incrementoMensal, 
+                rentabilidadeMes,   
+                mesesRestantes
+            ) - incrementoMensal;
+            let irCobrar = (jurosRegressivo) ? valueOfIR(diasPorMes * mesesRestantes) : ir
+            let IRPeriodo = porcentagemDe(irCobrar, rendimentoBruto);
             
-            if(i%30==0){ // A cada mês
-                let rendimentoAporte = (rendimento/periodoRend) * diasRestantes;
-    
-                aportes.push({
-                    "valor": incrementoMensal, 
-                    "rendimento": rendimentoAporte,
-                    "ir": (true) ? valueOfIR(diasRestantes) : ir
-                });
-                objAux.totalInvestido+=incrementoMensal;
-            } 
+            objAux.valorTotalbruto += incrementoMensal + rendimentoBruto;
+            objAux.totalInvestido += incrementoMensal;
+            objAux.IRPago += IRPeriodo;
         }
-    
-        aportes.forEach((aporte)=>{
-            calculaRendimento(aporte.rendimento, aporte.valor, aporte.ir);
-            objAux.valorTotalLiquido+=aporte.valor;
-        });
-        objAux.valorTotalbruto = objAux.valorTotalLiquido + objAux.IRPago;
         objAux.lucroBruto = objAux.valorTotalbruto - objAux.totalInvestido;
+        objAux.valorTotalLiquido = objAux.valorTotalbruto - objAux.IRPago;
         objAux.lucroLiquido = objAux.valorTotalLiquido - objAux.totalInvestido;
     
         valoresCalculados = objAux;
+    }
     
-        function calculaRendimento(rendi, valor, irCobrar){
-            let rendimentoBruto = porcentagemDe(rendi, valor);
-            let IRPeriodo = porcentagemDe(irCobrar, rendimentoBruto);
-            let rendimentoLiquido = rendimentoBruto - IRPeriodo;
+    /* F = P.((1 + i)^n)
+        F = valor futuro (muitas vezes chamado de M ou "montante")
+        P = valor presente (muitas vezes chamado de "principal")
+        n = número de períodos (em dias, meses, anos, ... dependendo do contexto)
+        i = taxa de juros (normalmente na forma percentual)
+        J = juros
+    */
+    function calcularJurosCompostos(valor, juros, periodo){
+        return valor*Math.pow(1 + (juros/100), periodo);
+    }
     
-            objAux.valorTotalLiquido+=rendimentoLiquido;
-            objAux.IRPago+=IRPeriodo;
-        }
+    /* M.[((1+i)^n) - 1]/i
+        M = mensalidade (ou outro pagamento periódico, também chamado PGTO ou PMT)
+        n = número de períodos (em dias, meses, anos, ..., também chamado NPER)
+        i = taxa de juros (normalmente na forma percentual, também chamado TAXA ou RATE)
+    */
+    function calcularJurosCompostosMensais(valor, juros, periodo){
+        let taxaJuros = (juros/100);
+        return valor*(Math.pow(1 + taxaJuros, periodo)- 1)/taxaJuros;
     }
     
     function porcentagemDe(porcentagem, valor){
@@ -98,6 +111,13 @@ var valoresCalculados;
         data.setSeconds(0);
     
         return data;
+    }
+    
+    function obterProxMes(data){
+        let dataAux = new Date(data.getTime());
+        dataAux.setMonth(data.getMonth() + 1);
+        dataAux.setDate(data.getDate());
+        return dataAux;
     }
     
     // Diferença entre as datas em dias
