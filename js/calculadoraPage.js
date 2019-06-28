@@ -100,10 +100,6 @@ var valoresCalculados;
         return valor*(Math.pow(1 + taxaJuros, periodo)- 1)/taxaJuros;
     }
     
-    function porcentagemDe(porcentagem, valor){
-        return (porcentagem*valor)/100;
-    }
-    
     function removerHHmmss(data){
         data.setHours(0);
         data.setMilliseconds(0);

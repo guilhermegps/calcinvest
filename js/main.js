@@ -11,12 +11,12 @@
 
 //FORMATA VALORES MONETARIOS - 1009.9 ->R$ 1.009,90
 function formatarMonetario(valor) {
-    if(valor == null || valor == undefined || valor == '') return valor;
+    if(isBlank(valor)) return "";
     return 'R$ ' + valor.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }
 
 function convertStringToFloat(valorString){
-    if(valorString==null || valorString=="") return 0.00;
+    if(isBlank(valorString)) return 0.00;
 
     return parseFloat(valorString.replace(".", "").replace(",", "."));
 }
@@ -47,4 +47,11 @@ function valueOfIR(diasCorridos){
     } 
     
     return 15;
+}
+
+function isBlank(valor){
+    if(!valor || valor=='')
+        return true;
+
+    return false;
 }
