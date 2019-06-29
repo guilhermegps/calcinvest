@@ -1,16 +1,15 @@
-<div class="col-lg-12 mb-4">  
+<div class="col-lg-12 mb-4">
     <!-- Approach -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-info">Renda Fixa</h6>
         </div>
         <div class="card-body">
-            <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-            <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-            <br>
+            <p>Apartir dos <strong>dados do seu investimento</strong>, a nossa calculadora ir&aacute;
+                <strong>estimar</strong> o rendimento de sua aplica&ccedil;&atilde;o em renda fixa.</p>
             <form class="form-horizontal">
                 <legend>Calculadora</legend>
-                
+
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="periodoRendimento">Período Rendimento</label>
@@ -20,65 +19,60 @@
                             <option value="3">Dia</option>
                         </select>
                     </div>
-                    
+
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="rendimento">Rendimento (%)</label>  
-                        <input id="rendimento" name="rendimento" 
-                            type="text" placeholder="Percentual de rendimento" 
+                        <label class="col-md-12 control-label" for="rendimento">Rendimento (%)</label>
+                        <input id="rendimento" name="rendimento" type="text" placeholder="Percentual de rendimento"
                             class="form-control input-md">
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="valorInicial">Valor Inicial (R$)</label>  
-                        <input id="valorInicial" name="valorInicial" type="text"
-                            placeholder="1000" class="form-control input-md"
-                            title="Informe o valor inicial do investimento">
+                        <label class="col-md-12 control-label" for="valorInicial">Valor Inicial (R$)</label>
+                        <input id="valorInicial" name="valorInicial" type="text" placeholder="1000"
+                            class="form-control input-md" title="Informe o valor inicial do investimento">
                     </div>
 
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="incrementoMensal">Incremento Mensal (R$)</label>  
-                        <input id="incrementoMensal" name="incrementoMensal" 
-                            type="text" placeholder="250" class="form-control input-md" 
-                            title="Valor que será incrementado todo mês">
+                        <label class="col-md-12 control-label" for="incrementoMensal">Incremento Mensal (R$)</label>
+                        <input id="incrementoMensal" name="incrementoMensal" type="text" placeholder="250"
+                            class="form-control input-md" title="Valor que será incrementado todo mês">
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="anos">Anos</label>  
-                        <input id="anos" name="anos" type="text" 
-                            placeholder="3" class="form-control input-md"
+                        <label class="col-md-12 control-label" for="anos">Anos</label>
+                        <input id="anos" name="anos" type="text" placeholder="3" class="form-control input-md"
                             title="Tempo de duração do investimento em anos">
                     </div>
 
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label">IR Regressivo?</label> 
+                        <label class="col-md-12 control-label">IR Regressivo?</label>
                         <label class="radio-inline" for="radios-0">
-                            <input type="radio" class="input-md" name="radios" id="radios-sim" value="true" checked="checked">
+                            <input type="radio" class="input-md" name="radios" id="radios-sim" value="true"
+                                checked="checked">
                             Sim
-                        </label> 
+                        </label>
                         <label class="radio-inline" for="radios-1">
                             <input type="radio" class="input-md" name="radios" id="radios-nao" value="false">
                             Não
                         </label>
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0" id="divIR" style="display: none">
-                        <label class="col-md-12 control-label" for="ir">IR (%)</label>  
-                        <input id="ir" name="ir" 
-                            type="text" placeholder="15" class="form-control input-md" 
+                        <label class="col-md-12 control-label" for="ir">IR (%)</label>
+                        <input id="ir" name="ir" type="text" placeholder="15" class="form-control input-md"
                             title="Informe o valor de Imposto de Renda que será cobrado">
                     </div>
                 </div>
-                
+
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <button type="button" id="calcular" name="calcular" 
-                            class="btn btn-info"> Calcular </button>
+                        <button type="button" id="calcular" name="calcular" class="btn btn-info"> Calcular </button>
                     </div>
                 </div>
             </form>
