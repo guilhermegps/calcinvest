@@ -19,8 +19,7 @@ var valoresCalculados;
     $('#calcular').click(function(){
         calcular();
         $("#loadResultado").load("page/component/resultado.html");
-        $("#loadGraficoGlobal").load("page/component/graficoGlobal.html");
-        $("#loadGraficoPizza").load("page/component/graficoPizza.html");
+        // $("#loadGraficoGlobal").load("page/component/graficoGlobal.html");
     });
 
     function calcular(){
