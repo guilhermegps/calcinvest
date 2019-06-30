@@ -7,9 +7,14 @@
         <div class="card-body">
             <p>Apartir dos <strong>dados do seu investimento</strong>, a nossa calculadora ir&aacute;
                 <strong>estimar</strong> o rendimento de sua aplica&ccedil;&atilde;o em renda fixa.</p>
-            <form class="form-horizontal">
+            <form class="form-horizontal" id="formRendaFixa">
                 <legend>Calculadora</legend>
 
+                <div class="form-group row" id="alertaCalculadoraRendaFixa" style="display: none">
+                    <div class="alert alert-warning" role="alert">
+                        Preencha todos os campos corretamente!
+                    </div>
+                </div>
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="periodoRendimento">Período Rendimento</label>
@@ -20,32 +25,32 @@
                         </select>
                     </div>
 
-                    <div class="col-md-6 mb-3 mb-sm-0">
+                    <div class="col-md-6 mb-3 mb-sm-4">
                         <label class="col-md-12 control-label" for="rendimento">Rendimento (%)</label>
                         <input id="rendimento" name="rendimento" type="text" placeholder="Percentual de rendimento"
-                            class="form-control input-md">
+                            class="form-control input-md" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="valorInicial">Valor Inicial (R$)</label>
-                        <input id="valorInicial" name="valorInicial" type="text" placeholder="1000"
-                            class="form-control input-md" title="Informe o valor inicial do investimento">
+                        <input id="valorInicial" name="valorInicial" type="text" placeholder="Valor de partida"
+                            class="form-control input-md" required>
                     </div>
 
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="incrementoMensal">Incremento Mensal (R$)</label>
-                        <input id="incrementoMensal" name="incrementoMensal" type="text" placeholder="250"
-                            class="form-control input-md" title="Valor que será incrementado todo mês">
+                        <input id="incrementoMensal" name="incrementoMensal" type="text" placeholder="Aporte mensal"
+                            class="form-control input-md" required>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="anos">Anos</label>
-                        <input id="anos" name="anos" type="text" placeholder="3" class="form-control input-md"
-                            title="Tempo de duração do investimento em anos">
+                        <input id="anos" name="anos" type="text" placeholder="Duração do investimento"
+                            class="form-control input-md" required>
                     </div>
 
                     <div class="col-md-6 mb-3 mb-sm-0">
@@ -65,14 +70,13 @@
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0" id="divIR" style="display: none">
                         <label class="col-md-12 control-label" for="ir">IR (%)</label>
-                        <input id="ir" name="ir" type="text" placeholder="15" class="form-control input-md"
-                            title="Informe o valor de Imposto de Renda que será cobrado">
+                        <input id="ir" name="ir" type="text" placeholder="Taxa do IR" class="form-control input-md">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-sm-0">
-                        <button type="button" id="calcular" name="calcular" class="btn btn-info"> Calcular </button>
+                        <input type="submit" id="calcular" name="calcular" class="btn btn-info" value="Calcular">
                     </div>
                 </div>
             </form>

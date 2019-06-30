@@ -17,6 +17,13 @@ var valoresCalculados;
     });
 
     $('#calcular').click(function(){
+        event.preventDefault();
+        if(!$('#formRendaFixa').valid()){
+            $('#alertaCalculadoraRendaFixa').show();
+            return;
+        }
+        $('#alertaCalculadoraRendaFixa').hide();
+
         calcular();
         $("#loadResultado").load("page/component/resultado.html");
         // $("#loadGraficoGlobal").load("page/component/graficoGlobal.html");
