@@ -1,0 +1,92 @@
+<div class="col-lg-12 mb-4">
+    <!-- Approach -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-info">Percentuais</h6>
+        </div>
+        <div class="card-body">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="percentual-1-tab" data-toggle="tab" href="#percentual-1" role="tab"
+                        aria-controls="percentual-1" aria-selected="true">Quanto porcento é</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="percentual-2-tab" data-toggle="tab" href="#perfil" role="tab"
+                        aria-controls="percentual-2" aria-selected="false">Porcentagem de</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="percentual-3-tab" data-toggle="tab" href="#porcentagem-3" role="tab"
+                        aria-controls="percentual-3" aria-selected="false">Somar porcentagem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="percentual-4-tab" data-toggle="tab" href="#teste" role="tab"
+                        aria-controls="percentual-4" aria-selected="false">Subtrair porcentagem</a>
+                </li>
+            </ul>
+
+            <form class="form-horizontal">
+                <div class="row">
+                    <div class="tab-content" id="controleAbas">
+                        <!-- Procentagem 1 -->
+                        <div class="tab-pane fade show active" id="percentual-1" role="tabpanel"
+                            aria-labelledby="percentual-1-tab">
+                            <br>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p>O valor&nbsp;<input id="a1" class="col-md-2" type="number" />&nbsp;&eacute;
+                                        <span class="bg-info text-light"><span id="result1">0</span>%</span> de&nbsp;<input
+                                            id="b1" class="col-md-2" type="number" /></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Procentagem 2 -->
+                        <div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="percentual-2-tab">
+                            <br>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p><input id="a2" class="col-md-2"
+                                            type="number" />%&nbsp;de&nbsp;<input id="b2" class="col-md-2"
+                                            type="number" />&nbsp;&eacute;&nbsp;<span
+                                            class="bg-info text-light" id="result2">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Procentagem 3 -->
+                        <div class="tab-pane fade" id="porcentagem-3" role="tabpanel"
+                            aria-labelledby="percentual-3-tab">
+                            <br>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p>O&nbsp;valor&nbsp;<input id="a3" class="col-md-2"
+                                            type="number" />&nbsp;<strong class="text-lg">mais</strong>&nbsp;<input id="b3" class="col-md-2"
+                                            type="number" />%&nbsp;&eacute; igual a&nbsp;<span
+                                            class="bg-info text-light" id="result3">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Procentagem 4 -->
+                        <div class="tab-pane fade" id="teste" role="tabpanel" aria-labelledby="percentual-4-tab">
+                            <br>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p>O&nbsp;valor&nbsp;<input id="a4" class="col-md-2"
+                                            type="number" />&nbsp;<strong class="text-lg">menos</strong>&nbsp;<input id="b4" class="col-md-2"
+                                            type="number" />%&nbsp;&eacute; igual a&nbsp;<span
+                                            class="bg-info text-light" id="result4">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <button type="button" id="calcular" name="calcular" class="btn btn-info"> Calcular </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/procentagemPage.js"></script>
