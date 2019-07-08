@@ -1,13 +1,11 @@
 # CalcInvest
-> Está é uma calculadora de investimentos muito útil para quem quer simular situações no mercado financeiro.
-
-One to two paragraph statement about your product and what it does.
+> Esta é uma calculadora de investimentos direcionada para aqueles que tem interesse em simular as diversas situações envolvendo finanças pessoais e mercado financeiro.
 
 ![](img/print.png)
 
 ## Como funciona
 
-Essa é uma plataforma de calculos financeiros com o unico objetivo de permitir que você realize seus calculos de investimento com mais facilidade e transparência.
+Trata-se de uma plataforma de calculos financeiros com o único objetivo de permitir que você realize seus calculos de investimento com mais facilidade e transparência.
 Para utilizar a plataforma você só precisará escolher a operação desejada e informar os dados necessários, a plataforma faz todo o resto.
 
 ## Configurando o ambiente de desenvolvimento

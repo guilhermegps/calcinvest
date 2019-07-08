@@ -42,16 +42,16 @@ var valoresCalculados;
         let valorIni = convertStringToFloat($('#valorInicial').val());
         let incrementoMensal = convertStringToFloat($('#incrementoMensal').val());
         let rendimento = convertStringToFloat($('#rendimento').val());
-        let anos = convertStringToFloat($('#anos').val());
+        let duracao = convertStringToFloat($('#duracao').val());
         let ir = convertStringToFloat($('#ir').val());
         let jurosRegressivo = $('#radios-sim').prop( "checked" );
         
         let dataBase = removerHHmmss(new Date());
         let dataTermino = removerHHmmss(new Date());
-        dataTermino.setFullYear(dataBase.getFullYear() + anos);
+        dataTermino.setFullYear(dataBase.getFullYear() + duracao);
         let diasTotais = diferencaEntreDatas(dataBase, dataTermino);
-        let tempoRendimento = anos;
-        if(periodoRend==2) tempoRendimento = anos*12;
+        let tempoRendimento = duracao/12;
+        if(periodoRend==2) tempoRendimento = duracao;
         else if(periodoRend==3) tempoRendimento = diasTotais;
     
         ir = (jurosRegressivo) ? valueOfIR(diasTotais) : ir;
@@ -59,13 +59,12 @@ var valoresCalculados;
         objAux.totalInvestido = valorIni;
         objAux.IRPago = porcentagemDe(ir, objAux.valorTotalbruto-valorIni);
     
-        let mesesTotais = anos*12;
-        let diasPorMes = (diasTotais/mesesTotais);
+        let diasPorMes = (diasTotais/duracao);
         let rentabilidadeMes = (rendimento/12);
         if(periodoRend==2) rentabilidadeMes = rendimento;
         else if(periodoRend==3) rentabilidadeMes = rendimento * diasPorMes;
-        for(let i=1; i<=mesesTotais; i++){
-            let mesesRestantes = (mesesTotais-i);
+        for(let i=1; i<=duracao; i++){
+            let mesesRestantes = (duracao-i);
             let rendimentoBruto = calcularJurosCompostos(
                 incrementoMensal, 
                 rentabilidadeMes,   
