@@ -11365,4 +11365,66 @@ body.sidebar-toggled footer.sticky-footer {
     top: 50%;
     transform: translateY(-50%);
     width: 60%;
-  }
+}
+
+/*==========
+MENU HAMBURGUER
+===========*/
+#loadSidebar{
+    z-index: 50;
+}
+
+.content-menu {
+    display: none;
+    position: fixed;
+    top: 77px;
+    left: 103px;
+    z-index: 50;
+    transform: translate(-50%, -50%);
+}
+
+.toggled-btn-menu{
+    left: 5px;
+}
+
+.content-menu  #burger {
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    background-color: #36b9cc;
+}
+
+.content-menu  #burger::after {
+    font-weight: 900;
+    content: '\f104';
+    font-family: 'Font Awesome 5 Free';
+    margin-right: 0.1rem;
+}
+
+.content-menu  #burger:hover {
+    text-decoration: none;
+}
+
+.content-menu  #burger:focus {
+    outline: none;
+}
+
+.toggled-btn-menu #burger::after {
+    content: '\f105';
+    font-family: 'Font Awesome 5 Free';
+    margin-left: 0.25rem;
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 768px) {
+    .content-menu{
+        display: block;
+    }
+
+    #loadSidebar{
+       display: none;
+    }
+}

@@ -1,6 +1,6 @@
 (function($) {
     "use strict"; // Start of use strict
-  
+
     $("#loadCalculadora").load("page/component/calculadora.html");
     $("#loadPorcentagem").load("page/component/porcentagem.html");
 
