@@ -52,3 +52,8 @@ function isBlank(valor){
 
     return false;
 }
+
+function toogleButtonMenu(el){
+    $(el).toggleClass('toggled-btn-menu');
+    $("#loadSidebar").toggle();
+}

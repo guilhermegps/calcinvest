@@ -11365,4 +11365,74 @@ body.sidebar-toggled footer.sticky-footer {
     top: 50%;
     transform: translateY(-50%);
     width: 60%;
-  }
+}
+
+/*==========
+MENU HAMBURGUER
+===========*/
+#loadSidebar{
+    z-index: 50;
+}
+
+.toggled-btn-menu{
+    left: 102px;
+}
+
+.content-menu {
+    display: none;
+    position: fixed;
+    top: 30px;
+    left: 5px;
+    z-index: 50;
+    transform: translate(-50%, -50%);
+}
+
+
+.content-menu  #burger {
+    width: 2.5rem;
+    height: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.content-menu  #burger::after {
+    font-weight: 900;
+    content: '\f104';
+    font-family: 'Font Awesome 5 Free';
+    margin-right: 0.1rem;
+}
+
+.content-menu  #burger:hover {
+    text-decoration: none;
+}
+
+.content-menu  #burger:focus {
+    outline: none;
+}
+
+.toggled-btn-menu #burger::after {
+    content: '\f105';
+    font-family: 'Font Awesome 5 Free';
+    margin-left: 0.25rem;
+}
+
+
+/* Small devices (landscape phones, less than 768px)*/
+@media (max-width: 767.98px) {
+    .content-menu{
+        display: block;
+    }
+
+    #loadSidebar{
+       display: none;
+    }
+
+
+}
+
+
+/* Large devices (desktops, less than 1200px)*/
+@media (max-width: 1199.98px) {
+
+}
