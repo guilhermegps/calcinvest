@@ -11374,18 +11374,19 @@ MENU HAMBURGUER
     z-index: 50;
 }
 
-.toggled-btn-menu{
-    left: 102px;
-}
-
 .content-menu {
     display: none;
     position: fixed;
-    top: 30px;
-    left: 5px;
+    top: 77px;
+    left: 103px;
     z-index: 50;
     transform: translate(-50%, -50%);
 }
+
+.toggled-btn-menu{
+    left: 5px;
+}
+
 
 
 .content-menu  #burger {
@@ -11427,12 +11428,5 @@ MENU HAMBURGUER
     #loadSidebar{
        display: none;
     }
-
-
-}
-
-
-/* Large devices (desktops, less than 1200px)*/
-@media (max-width: 1199.98px) {
 
 }
