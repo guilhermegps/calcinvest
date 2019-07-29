@@ -18,7 +18,7 @@ function formatarMonetario(valor) {
 function convertStringToFloat(valorString){
     if(isBlank(valorString)) return 0.00;
 
-    return parseFloat(valorString.replace(".", "").replace(",", "."));
+    return parseFloat(valorString.replace(/[-\\^$*+?.()|[\]{}]/g, "").replace(",", "."));
 }
 
 function getUrlParameter(sParam) {
