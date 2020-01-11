@@ -63,24 +63,24 @@
                 <div class="form-group row">
                     <div class="col-md-2 mb-3 mb-sm-0">
                         <label class="col-md-12 control-label" for="qtdVenda">Quantidade</label>
-                        <input name="qtdVenda" type="text" placeholder="Quantidade de cotas"
+                        <input name="qtdVenda" type="number" placeholder="Quantidade de cotas"
                             class="form-control input-md" required>
                     </div>
 
                     <div class="col-md-2 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="vlrCotaVenda">Valor da Cota</label>
+                        <label class="col-md-12 control-label" for="vlrCotaVenda">Valor da Cota (R$)</label>
                         <input name="vlrCotaVenda" type="text" placeholder="Por quanto foi vendida a cota"
-                            class="form-control input-md" required>
+                            class="form-control input-md mascaraMonetaria" required>
                     </div>
 
                     <div class="col-md-2 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="taxasVenda">Taxas</label>
+                        <label class="col-md-12 control-label" for="taxasVenda">Taxas (R$)</label>
                         <input name="taxasVenda" type="text" placeholder="Total de taxas"
-                            class="form-control input-md" required>
+                            class="form-control input-md mascaraMonetaria" required>
                     </div>
 
                     <div class="col-md-2 mb-3 mb-sm-0">
-                        <label class="col-md-12 control-label" for="totalRecebido">Total Recebido</label>
+                        <label class="col-md-12 control-label" for="totalRecebido">Total Recebido (R$)</label>
                         <input name="totalRecebido" type="text" class="form-control input-md" readonly>
                     </div>
                 </div>
