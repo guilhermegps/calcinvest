@@ -1,11 +1,20 @@
-(function($) {
+(function ($) {
     "use strict"; // Start of use strict
     // debug();
+    $(`#divVenda input`).keyup(function() {
+        let linha = $(this).parent(`div`).parent(`div`);
+        let qtdVenda = convertStringToFloat(linha.find("input[name='qtdVenda']").val());
+        let vlrCota = convertStringToFloat(linha.find("input[name='vlrCotaVenda']").val());
+        let taxasVenda = convertStringToFloat(linha.find("input[name='taxasVenda']").val());
+
+        let totalRecebido = formatarMonetario((qtdVenda * vlrCota) - taxasVenda);
+        linha.find("input[name='totalRecebido']").val(totalRecebido);
+    });
     let id=1;
 
     addLinha();
     $('#addLine').click(addLinha);
-    function addLinha(){
+    function addLinha() {
         id++;
         $('#divCompras').append(`
         <div class="form-group row" id="${id}">
@@ -29,7 +38,8 @@
     
             <div class="col-md-2 mb-3 mb-sm-0">
                 <label class="col-md-12 control-label" for="totalPago">Total Pago (R$)</label>
-                <input name="totalPago" type="text" class="form-control input-md" readonly>
+                <input name="totalPago" type="text" 
+                    class="form-control input-md" readonly>
             </div>
     
             <div class="col-md-2 mb-3 mb-sm-0 align-self-center">
@@ -40,10 +50,23 @@
             </div>
         </div>`);
 
-        $('.mascaraMonetaria').mask("#.##0,00", {reverse: true});
+        $('.mascaraMonetaria').mask("#.##0,00", { reverse: true });
+        $(`#${id} input`).keyup(function() {
+            let linha = $(this).parent(`div`).parent(`div`);
+            let qtdCompra = convertStringToFloat(linha.find("input[name='qtdCompra']").val());
+            let vlrCota = convertStringToFloat(linha.find("input[name='vlrCotaCompra']").val());
+            let taxasCompra = convertStringToFloat(linha.find("input[name='taxasCompra']").val());
+    
+            let totalPago = formatarMonetario((qtdCompra * vlrCota) + taxasCompra);
+            linha.find("input[name='totalPago']").val(totalPago);
+        });
     }
 })(jQuery); // End of use strict
 
-function remover(idElemento){
-    $('#'+idElemento).remove();
+function remover(idElemento) {
+    $(`#${idElemento}`).remove();
+}
+
+function calcularTotalOP() {
+
 }

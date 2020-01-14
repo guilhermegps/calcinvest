@@ -9,10 +9,10 @@
         $("#loadPage").load("page/principal.html");
 })(jQuery); // End of use strict
 
-//FORMATA VALORES MONETARIOS - 1009.9 ->R$ 1.009,90
+//FORMATA VALORES MONETARIOS - 1009.9 -> 1.009,90
 function formatarMonetario(valor) {
-    if(isBlank(valor)) return "";
-    return 'R$ ' + valor.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+    if(isBlank(valor)) return "0,00";
+    return valor.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }
 
 function convertStringToFloat(valorString){
