@@ -17,29 +17,29 @@
     function addLinha() {
         id++;
         $('#divCompras').append(`
-        <div class="form-group row" id="${id}">
+        <div class="form-group row" id="divCompra-${id}">
             <div class="col-md-2 mb-3 mb-sm-0">
-                <label class="col-md-12 control-label" for="qtdCompra">Quantidade</label>
-                <input name="qtdCompra" type="number" placeholder="Quantidade de cotas"
-                    class="form-control input-md" required>
+                <label class="col-md-12 control-label" for="qtdCompra-${id}">Quantidade</label>
+                <input name="qtdCompra-${id}" type="number" placeholder="Quantidade de cotas"
+                    class="form-control input-md qtdCompra" required>
             </div>
     
             <div class="col-md-2 mb-3 mb-sm-0">
-                <label class="col-md-12 control-label" for="vlrCotaCompra">Valor da Cota (R$)</label>
-                <input name="vlrCotaCompra" type="text" placeholder="Quanto foi pago pela cota"
-                    class="form-control input-md mascaraMonetaria" required>
+                <label class="col-md-12 control-label" for="vlrCotaCompra-${id}">Valor da Cota (R$)</label>
+                <input name="vlrCotaCompra-${id}" type="text" placeholder="Quanto foi pago pela cota"
+                    class="form-control input-md mascaraMonetaria vlrCotaCompra" required>
             </div>
     
             <div class="col-md-2 mb-3 mb-sm-0">
-                <label class="col-md-12 control-label" for="taxasCompra">Taxas (R$)</label>
-                <input name="taxasCompra" type="text" placeholder="Total de taxas"
-                    class="form-control input-md mascaraMonetaria" required>
+                <label class="col-md-12 control-label" for="taxasCompra-${id}">Taxas (R$)</label>
+                <input name="taxasCompra-${id}" type="text" placeholder="Total de taxas"
+                    class="form-control input-md mascaraMonetaria taxasCompra" required>
             </div>
     
             <div class="col-md-2 mb-3 mb-sm-0">
-                <label class="col-md-12 control-label" for="totalPago">Total Pago (R$)</label>
-                <input name="totalPago" type="text" 
-                    class="form-control input-md" readonly>
+                <label class="col-md-12 control-label" for="totalPago-${id}">Total Pago (R$)</label>
+                <input name="totalPago-${id}" type="text" 
+                    class="form-control input-md totalPago" readonly>
             </div>
     
             <div class="col-md-2 mb-3 mb-sm-0 align-self-center">
@@ -51,22 +51,28 @@
         </div>`);
 
         $('.mascaraMonetaria').mask("#.##0,00", { reverse: true });
-        $(`#${id} input`).keyup(function() {
+        $(`#divCompra-${id} input`).keyup(function() {
             let linha = $(this).parent(`div`).parent(`div`);
-            let qtdCompra = convertStringToFloat(linha.find("input[name='qtdCompra']").val());
-            let vlrCota = convertStringToFloat(linha.find("input[name='vlrCotaCompra']").val());
-            let taxasCompra = convertStringToFloat(linha.find("input[name='taxasCompra']").val());
+            let qtdCompra = convertStringToFloat(linha.find(".qtdCompra").val());
+            let vlrCota = convertStringToFloat(linha.find(".vlrCotaCompra").val());
+            let taxasCompra = convertStringToFloat(linha.find(".taxasCompra").val());
     
             let totalPago = formatarMonetario((qtdCompra * vlrCota) + taxasCompra);
-            linha.find("input[name='totalPago']").val(totalPago);
+            linha.find(".totalPago").val(totalPago);
         });
     }
+
+    $('#calcular').on('click', function() {
+        event.preventDefault();
+        if(!$('#formDarfFii').valid()){
+            $('#alertaDarfFii').show();
+            return;
+        }
+        $('#alertaDarfFii').hide();
+    
+    });
 })(jQuery); // End of use strict
 
 function remover(idElemento) {
-    $(`#${idElemento}`).remove();
-}
-
-function calcularTotalOP() {
-
+    $(`#divCompra-${idElemento}`).remove();
 }
