@@ -70,7 +70,23 @@
         }
         $('#alertaDarfFii').hide();
     
+        obterMediaCompra();
     });
+    
+    function obterMediaCompra(){
+        let linhasCompra = $('#divCompras').children();
+        let qtdTotal = 0;
+        let valorTotal = 0;
+    
+        linhasCompra.each(function(index, element){
+            qtdTotal+=convertStringToFloat($(element).find(".qtdCompra").val());
+            valorTotal+=convertStringToFloat($(element).find(".totalPago").val());
+        });
+    
+        let mediaCompra = valorTotal/qtdTotal; // Média de todas as compras
+        console.log("Média compras: " + mediaCompra);
+        return mediaCompra;
+    }
 })(jQuery); // End of use strict
 
 function remover(idElemento) {
