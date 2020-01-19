@@ -2,13 +2,12 @@
     "use strict"; // Start of use strict
     // debug();
     $(`#divVenda input`).keyup(function() {
-        let linha = $(this).parent(`div`).parent(`div`);
-        let qtdVenda = convertStringToFloat(linha.find("input[name='qtdVenda']").val());
-        let vlrCota = convertStringToFloat(linha.find("input[name='vlrCotaVenda']").val());
-        let taxasVenda = convertStringToFloat(linha.find("input[name='taxasVenda']").val());
+        let qtdVenda = convertStringToFloat($("#qtdVenda").val());
+        let vlrCota = convertStringToFloat($("#vlrCotaVenda").val());
+        let taxasVenda = convertStringToFloat($("#taxasVenda").val());
 
         let totalRecebido = formatarMonetario((qtdVenda * vlrCota) - taxasVenda);
-        linha.find("input[name='totalRecebido']").val(totalRecebido);
+        $("#totalRecebido").val(totalRecebido);
     });
     let id=1;
 
@@ -70,7 +69,20 @@
         }
         $('#alertaDarfFii').hide();
     
-        obterMediaCompra();
+        let vlrMedioCompra = obterMediaCompra();
+        let qtdVenda = convertStringToFloat($("#qtdVenda").val());
+        let totalRecebido = convertStringToFloat($("#totalRecebido").val());
+
+        let lucroVenda = totalRecebido - qtdVenda*vlrMedioCompra;
+        let IRDevido = (lucroVenda>0) ? lucroVenda*0.2 : 0;
+        let dedoDuro = IRDevido * 0.00005;
+
+        console.log("Valores sobre a venda de " + qtdVenda + " cotas do " + $("#nome").val());
+        console.log("Valor Médio Compra: " + vlrMedioCompra);
+        console.log("Lucro Líquido: " + lucroVenda);
+        console.log("Imposto de Renda Devido(20%): " + IRDevido);
+        console.log("Dedo Duro(0,005): " + dedoDuro);
+        console.log("IR - Dedo Duro: " + IRDevido-dedoDuro);
     });
     
     function obterMediaCompra(){
@@ -84,7 +96,6 @@
         });
     
         let mediaCompra = valorTotal/qtdTotal; // Média de todas as compras
-        console.log("Média compras: " + mediaCompra);
         return mediaCompra;
     }
 })(jQuery); // End of use strict
