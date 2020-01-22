@@ -1,0 +1,74 @@
+<div class="col-lg-12 mb-4">
+    <!-- Approach -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-info" id="tituloResultado"></h6>
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <div class="col-lg-8">
+                    <div class="alert alert-primary" role="alert">
+                        <div class="d-flex justify-content-between">
+                            <div class="p-2">
+                                <strong>Valor Médio da Compra:</strong>
+                            </div>
+                            <div class="p-2">
+                                <strong><span id="valorMedioCompra"></span></strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="p-2">
+                            <strong>Total das Compras:</strong>
+                        </div>
+                        <div class="p-2" id="totalCompras"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="p-2 text-success">
+                            <strong>Lucro Bruto:</strong>
+                        </div>
+                        <div class="p-2 text-success" id="lucroBruto"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="p-2 text-primary">
+                            <strong>Percentual de Lucro:</strong>
+                        </div>
+                        <div class="p-2 text-primary" id="pctLucro"></div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="p-2 text-danger">
+                            <strong>Dedo Duro (0,005%):</strong>
+                        </div>
+                        <div class="p-2 text-danger" id="dedoDuro"></div>
+                    </div>
+                    <div class="alert alert-info" role="alert">
+                        <div class="d-flex justify-content-between">
+                            <div class="p-2">
+                                <span class=""><strong>Imposto de Renda (20%):</strong></span>
+                            </div>
+                            <div class="p-2">
+                                <span class="" id="IRDevido"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-flex justify-content-center align-items-center">
+                    <div class="card text-center bg-danger" style="width: 16rem; height: 12rem;">
+                        <div class="card-body">
+                            <div class="card-title text-light">
+                                <h5><strong>Valor do DARF a Pagar</strong></h5>
+                            </div>
+                            <br>
+                            <div class="card-text text-light">
+                                <span id="vlrDarfPagar"></span>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/resultadoDarfFIIsPage.js"></script>

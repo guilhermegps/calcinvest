@@ -1,3 +1,4 @@
+var valoresCalculados;
 (function ($) {
     "use strict"; // Start of use strict
     // debug();
@@ -62,6 +63,8 @@
     }
 
     $('#calcular').on('click', function() {
+        let objAux = {};
+
         event.preventDefault();
         if(!$('#formDarfFii').valid()){
             $('#alertaDarfFii').show();
@@ -69,23 +72,22 @@
         }
         $('#alertaDarfFii').hide();
     
-        let vlrMedioCompra = obterMediaCompra();
-        let qtdVenda = convertStringToFloat($("#qtdVenda").val());
-        let totalRecebido = convertStringToFloat($("#totalRecebido").val());
+        let totaisCompra = obterTotaisCompra();
+        objAux.nome = $("#nome").val();
+        objAux.vlrMedioCompra = totaisCompra.mediaCompra;
+        objAux.qtdVenda = convertStringToFloat($("#qtdVenda").val());
+        objAux.totalRecebido = convertStringToFloat($("#totalRecebido").val());
 
-        let lucroVenda = totalRecebido - qtdVenda*vlrMedioCompra;
-        let IRDevido = (lucroVenda>0) ? lucroVenda*0.2 : 0;
-        let dedoDuro = IRDevido * 0.00005;
+        objAux.lucroBruto = objAux.totalRecebido - objAux.qtdVenda*objAux.vlrMedioCompra;
+        objAux.IRDevido = (objAux.lucroBruto>0) ? objAux.lucroBruto*0.2 : 0;
+        objAux.dedoDuro = objAux.totalRecebido * 0.00005;
+        objAux.totalCompras = totaisCompra.valorTotal;
 
-        console.log("Valores sobre a venda de " + qtdVenda + " cotas do " + $("#nome").val());
-        console.log("Valor Médio Compra: " + vlrMedioCompra);
-        console.log("Lucro Líquido: " + lucroVenda);
-        console.log("Imposto de Renda Devido(20%): " + IRDevido);
-        console.log("Dedo Duro(0,005): " + dedoDuro);
-        console.log("IR - Dedo Duro: " + IRDevido-dedoDuro);
+        valoresCalculados = objAux;
+        $("#loadResultado").load("page/component/resultadoDarfFIIs.html");
     });
     
-    function obterMediaCompra(){
+    function obterTotaisCompra(){
         let linhasCompra = $('#divCompras').children();
         let qtdTotal = 0;
         let valorTotal = 0;
@@ -96,7 +98,7 @@
         });
     
         let mediaCompra = valorTotal/qtdTotal; // Média de todas as compras
-        return mediaCompra;
+        return {mediaCompra: mediaCompra, qtdTotal: qtdTotal, valorTotal: valorTotal};
     }
 })(jQuery); // End of use strict
 
