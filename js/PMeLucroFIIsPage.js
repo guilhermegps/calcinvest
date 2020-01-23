@@ -77,12 +77,15 @@ var valoresCalculados;
         objAux.vlrMedioCompra = totaisCompra.mediaCompra;
         objAux.qtdVenda = convertStringToFloat($("#qtdVenda").val());
         objAux.totalRecebido = convertStringToFloat($("#totalRecebido").val());
+        objAux.totalMediaVenda = objAux.qtdVenda * objAux.vlrMedioCompra;
 
         objAux.lucroBruto = objAux.totalRecebido - objAux.qtdVenda*objAux.vlrMedioCompra;
         objAux.IRDevido = (objAux.lucroBruto>0) ? objAux.lucroBruto*0.2 : 0;
         objAux.dedoDuro = objAux.totalRecebido * 0.00005;
         objAux.totalCompras = totaisCompra.valorTotal;
+        objAux.pctLucro = quantoPorcentoE(objAux.lucroBruto, objAux.totalMediaVenda);
 
+        objAux.IRDevido = (objAux.IRDevido>0) ? objAux.IRDevido : 0;
         valoresCalculados = objAux;
         $("#loadResultado").load("page/component/resultadoDarfFIIs.html");
     });
