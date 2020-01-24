@@ -15,6 +15,10 @@ function formatarMonetario(valor) {
     return valor.toFixed(2).replace(".", ",").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
 }
 
+function arredondar(valor, casasDecimais) {
+    return parseFloat(valor.toFixed(casasDecimais));
+}
+
 function convertStringToFloat(valorString){
     if(isBlank(valorString)) return 0.00;
 

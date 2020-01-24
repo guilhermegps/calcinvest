@@ -75,14 +75,16 @@ var valoresCalculados;
         let totaisCompra = obterTotaisCompra();
         objAux.nome = $("#nome").val();
         objAux.vlrMedioCompra = totaisCompra.mediaCompra;
+        objAux.vlrCotaVenda = convertStringToFloat($("#vlrCotaVenda").val());
         objAux.qtdVenda = convertStringToFloat($("#qtdVenda").val());
         objAux.totalRecebido = convertStringToFloat($("#totalRecebido").val());
-        objAux.totalMediaVenda = objAux.qtdVenda * objAux.vlrMedioCompra;
 
-        objAux.lucroBruto = objAux.totalRecebido - objAux.qtdVenda*objAux.vlrMedioCompra;
-        objAux.IRDevido = (objAux.lucroBruto>0) ? objAux.lucroBruto*0.2 : 0;
-        objAux.dedoDuro = objAux.totalRecebido * 0.00005;
-        objAux.totalCompras = totaisCompra.valorTotal;
+        objAux.totalMediaVenda = arredondar(objAux.qtdVenda * objAux.vlrMedioCompra, 2);
+        objAux.dedoDuro = arredondar((objAux.vlrCotaVenda * objAux.qtdVenda) * 0.00005, 2);
+        objAux.vendaSemDedoDuro = arredondar(objAux.totalRecebido - objAux.dedoDuro, 2);
+        objAux.lucroBruto = arredondar(objAux.vendaSemDedoDuro - objAux.totalMediaVenda, 2);
+        objAux.IRDevido = (objAux.lucroBruto>0) ? arredondar(objAux.lucroBruto*0.2, 2) : 0;
+        objAux.totalCompras = arredondar(totaisCompra.valorTotal, 2);
         objAux.pctLucro = quantoPorcentoE(objAux.lucroBruto, objAux.totalMediaVenda);
 
         objAux.IRDevido = (objAux.IRDevido>0) ? objAux.IRDevido : 0;

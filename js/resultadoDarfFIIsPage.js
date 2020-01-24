@@ -7,13 +7,11 @@
         $('#pctLucro').html(formatarMonetario(valoresCalculados.pctLucro) + '%');
         $('#lucroBruto').html('R$ ' + formatarMonetario(valoresCalculados.lucroBruto));
         $('#dedoDuro').html('R$ ' + formatarMonetario(valoresCalculados.dedoDuro));
-        $('#IRDevido').html('R$ ' + formatarMonetario(valoresCalculados.IRDevido));
+        $('#vendaSemDedoDuro').html('R$ ' + formatarMonetario(valoresCalculados.vendaSemDedoDuro));
 
     if(valoresCalculados.IRDevido>0){
         $('#divValorDARF').show();
-        $('#vlrDarfPagar').html('R$ ' + formatarMonetario(
-            valoresCalculados.IRDevido -  valoresCalculados.dedoDuro
-            ));
+        $('#vlrDarfPagar').html('R$ ' + formatarMonetario(valoresCalculados.IRDevido));
     } else{
         $('#divValorDARF').hide();
     }
