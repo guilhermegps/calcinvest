@@ -73,10 +73,17 @@ var valoresCalculados;
         $('#alertaDarfFii').hide();
     
         let totaisCompra = obterTotaisCompra();
+        objAux.qtdVenda = convertStringToFloat($("#qtdVenda").val());
+
+        if(objAux.qtdVenda > totaisCompra.qtdTotal){
+            $('#alertaVendaDarfFii').show();
+            return;
+        }
+        $('#alertaVendaDarfFii').hide();
+
         objAux.nome = $("#nome").val();
         objAux.vlrMedioCompra = totaisCompra.mediaCompra;
         objAux.vlrCotaVenda = convertStringToFloat($("#vlrCotaVenda").val());
-        objAux.qtdVenda = convertStringToFloat($("#qtdVenda").val());
         objAux.totalRecebido = convertStringToFloat($("#totalRecebido").val());
 
         objAux.totalMediaVenda = arredondar(objAux.qtdVenda * objAux.vlrMedioCompra, 2);
