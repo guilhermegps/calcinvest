@@ -2,12 +2,12 @@
     "use strict"; // Start of use strict
 
     if(valoresCalculados.valorTotalbruto>0){
-        $('#valorTotalbruto').html(formatarMonetario(valoresCalculados.valorTotalbruto));
-        $('#totalInvestido').html(formatarMonetario(valoresCalculados.totalInvestido));
-        $('#lucroLiquido').html(formatarMonetario(valoresCalculados.lucroLiquido));
-        $('#lucroBruto').html(formatarMonetario(valoresCalculados.lucroBruto));
-        $('#valorTotalLiquido').html(formatarMonetario(valoresCalculados.valorTotalLiquido));
-        $('#IRPago').html(formatarMonetario(valoresCalculados.IRPago));
+        $('#valorTotalbruto').html('R$ ' + formatarMonetario(valoresCalculados.valorTotalbruto));
+        $('#totalInvestido').html('R$ ' + formatarMonetario(valoresCalculados.totalInvestido));
+        $('#lucroLiquido').html('R$ ' + formatarMonetario(valoresCalculados.lucroLiquido));
+        $('#lucroBruto').html('R$ ' + formatarMonetario(valoresCalculados.lucroBruto));
+        $('#valorTotalLiquido').html('R$ ' + formatarMonetario(valoresCalculados.valorTotalLiquido));
+        $('#IRPago').html('R$ ' + formatarMonetario(valoresCalculados.IRPago));
     
         carregarGrafico();
     }

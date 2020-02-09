@@ -1,0 +1,102 @@
+<div class="col-lg-12 mb-4">
+    <!-- Approach -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-info">DARF FII</h6>
+        </div>
+        <div class="card-body">
+            <!-- <p>Apartir dos <strong>dados do seu investimento</strong>, a nossa calculadora ir&aacute;
+                <strong>estimar</strong> o rendimento de sua aplica&ccedil;&atilde;o em renda fixa.</p> -->
+            <form class="form-horizontal" id="formDarfFii">
+                <!-- <legend>Calculadora</legend> -->
+                
+                <div class="form-group row" id="alertaDarfFii" style="display: none">
+                    <div class="alert alert-warning" role="alert">
+                        Preencha todos os campos corretamente!
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-2 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="nome">Nome do FII</label>
+                        <input id="nome" name="nome" type="text" placeholder="Nome do FII"
+                        class="form-control input-md" maxlength="6" required>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <hr class="sidebar-divider my-0">
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-12 mb-3 mb-sm-0">
+                        <h4>Compras</h4>
+                    </div>
+                </div>
+
+                <div id="divCompras"></div>
+
+                <div class="form-group row">
+                    <div class="col-md-8 mb-3 mb-sm-0">
+                        <div class="float-right">
+                            <input type="button" id="addLine" name="addLine" class="btn btn-info" value="Adicionar Outra">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <hr class="sidebar-divider my-0">
+                </div>
+                
+                <div class="form-group row">
+                    <div class="col-md-12 mb-3 mb-sm-0">
+                        <h4>Venda</h4>
+                    </div>
+                </div>
+                
+                <div class="form-group row" id="alertaVendaDarfFii" style="display: none">
+                    <div class="alert alert-warning" role="alert">
+                        Não é possível vender mais cotas do que comprou
+                    </div>
+                </div>
+
+                <div class="form-group row" id="divVenda">
+                    <div class="col-md-2 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="qtdVenda">Quantidade</label>
+                        <input name="qtdVenda" id="qtdVenda" type="number" placeholder="Quantidade de cotas"
+                            class="form-control input-md" required>
+                    </div>
+
+                    <div class="col-md-2 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="vlrCotaVenda">Valor da Cota (R$)</label>
+                        <input name="vlrCotaVenda" id="vlrCotaVenda" type="text" placeholder="Por quanto foi vendida a cota"
+                            class="form-control input-md mascaraMonetaria" required>
+                    </div>
+
+                    <div class="col-md-2 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="taxasVenda">Taxas (R$)</label>
+                        <input name="taxasVenda" id="taxasVenda" type="text" placeholder="Total de taxas"
+                            class="form-control input-md mascaraMonetaria" required>
+                    </div>
+
+                    <div class="col-md-2 mb-3 mb-sm-0">
+                        <label class="col-md-12 control-label" for="totalRecebido">Total Recebido (R$)</label>
+                        <input name="totalRecebido" id="totalRecebido" type="text" class="form-control input-md" readonly>
+                    </div>
+                </div>
+                
+                <div class="form-group row">
+                    <hr class="sidebar-divider my-0">
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-6 mb-3 mb-sm-0">
+                        <input type="submit" id="calcular" name="calcular" class="btn btn-info" value="Calcular">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../../js/PMeLucroFIIsPage.js"></script>
