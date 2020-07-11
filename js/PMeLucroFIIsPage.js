@@ -24,25 +24,25 @@ var valoresCalculados;
                     class="form-control input-md qtdCompra" required>
             </div>
     
-            <div class="col-md-2 mb-3 mb-sm-0">
+            <div class="col-md-3 mb-3 mb-sm-0">
                 <label class="col-md-12 control-label" for="vlrCotaCompra-${id}">Valor da Cota (R$)</label>
                 <input name="vlrCotaCompra-${id}" type="text" placeholder="Quanto foi pago pela cota"
                     class="form-control input-md mascaraMonetaria vlrCotaCompra" required>
             </div>
     
-            <div class="col-md-2 mb-3 mb-sm-0">
+            <div class="col-md-3 mb-3 mb-sm-0">
                 <label class="col-md-12 control-label" for="taxasCompra-${id}">Taxas (R$)</label>
                 <input name="taxasCompra-${id}" type="text" placeholder="Total de taxas"
                     class="form-control input-md mascaraMonetaria taxasCompra" required>
             </div>
     
-            <div class="col-md-2 mb-3 mb-sm-0">
+            <div class="col-md-3 mb-3 mb-sm-0">
                 <label class="col-md-12 control-label" for="totalPago-${id}">Total Pago (R$)</label>
                 <input name="totalPago-${id}" type="text" 
                     class="form-control input-md totalPago" readonly>
             </div>
     
-            <div class="col-md-2 mb-3 mb-sm-0 align-self-center">
+            <div class="col-md-1 mb-3 mb-sm-0 align-self-center">
                 <br>
                 <button type="button" class="btn btn-danger" onclick="remover(${id})">
                     <i class="fa fa-trash" data-toggle="tooltip" title="Remover"></i>
