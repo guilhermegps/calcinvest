@@ -11,3 +11,10 @@ function quantoPorcentoE(valor, sobreOValor){
 
     return (valor/sobreOValor)*100;
 }
+
+function diferencaEntre(inicial, final){
+    if(isBlank(inicial) || isBlank(final))
+        return 0;
+
+    return ((final - inicial)/inicial) * 100;
+}
