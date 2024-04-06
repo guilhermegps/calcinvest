@@ -16,11 +16,15 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="percentual-3-tab" data-toggle="tab" href="#porcentagem-3" role="tab"
-                        aria-controls="percentual-3" aria-selected="false">Somar porcentagem</a>
+                        aria-controls="percentual-3" aria-selected="false">Diferença (%) entre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="percentual-4-tab" data-toggle="tab" href="#teste" role="tab"
-                        aria-controls="percentual-4" aria-selected="false">Subtrair porcentagem</a>
+                    <a class="nav-link" id="percentual-4-tab" data-toggle="tab" href="#porcentagem-4" role="tab"
+                        aria-controls="percentual-4" aria-selected="false">Somar porcentagem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="percentual-5-tab" data-toggle="tab" href="#teste" role="tab"
+                        aria-controls="percentual-5" aria-selected="false">Subtrair porcentagem</a>
                 </li>
             </ul>
 
@@ -33,8 +37,8 @@
                             <br>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <p>O valor&nbsp;<input id="a1" class="col-md-2" type="number" />&nbsp;&eacute;
-                                        <span class="bg-info text-light"><span id="result1">0</span>%</span> de&nbsp;<input
+                                    <p>O valor <input id="a1" class="col-md-2" type="number" /> &eacute;
+                                        <span class="bg-info text-light"><span id="result1">0</span>%</span> de <input
                                             id="b1" class="col-md-2" type="number" /></p>
                                 </div>
                             </div>
@@ -45,8 +49,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <p><input id="a2" class="col-md-2"
-                                            type="number" />%&nbsp;de&nbsp;<input id="b2" class="col-md-2"
-                                            type="number" />&nbsp;&eacute;&nbsp;<span
+                                            type="number" />% de <input id="b2" class="col-md-2"
+                                            type="number" /> &eacute; <span
                                             class="bg-info text-light" id="result2">0</span></p>
                                 </div>
                             </div>
@@ -57,22 +61,35 @@
                             <br>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <p>O&nbsp;valor&nbsp;<input id="a3" class="col-md-2"
-                                            type="number" />&nbsp;<strong class="text-lg">mais</strong>&nbsp;<input id="b3" class="col-md-2"
-                                            type="number" />%&nbsp;&eacute; igual a&nbsp;<span
-                                            class="bg-info text-light" id="result3">0</span></p>
+                                    <p>Diferença (%) entre o valor <strong class="text-lg">inicial</strong> <input id="a3" class="col-md-2"
+                                            type="number" /> e o valor <strong class="text-lg">final</strong> <input id="b3" class="col-md-2"
+                                            type="number" /> foi de 
+                                            <span class="bg-info text-light"><span id="result3">0</span>%</span></p>
                                 </div>
                             </div>
                         </div>
                         <!-- Procentagem 4 -->
-                        <div class="tab-pane fade" id="teste" role="tabpanel" aria-labelledby="percentual-4-tab">
+                        <div class="tab-pane fade" id="porcentagem-4" role="tabpanel"
+                            aria-labelledby="percentual-3-tab">
                             <br>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <p>O&nbsp;valor&nbsp;<input id="a4" class="col-md-2"
-                                            type="number" />&nbsp;<strong class="text-lg">menos</strong>&nbsp;<input id="b4" class="col-md-2"
-                                            type="number" />%&nbsp;&eacute; igual a&nbsp;<span
+                                    <p>O valor <input id="a4" class="col-md-2"
+                                            type="number" /> <strong class="text-lg">mais</strong> <input id="b4" class="col-md-2"
+                                            type="number" />% &eacute; igual a <span
                                             class="bg-info text-light" id="result4">0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Procentagem 5 -->
+                        <div class="tab-pane fade" id="teste" role="tabpanel" aria-labelledby="percentual-5-tab">
+                            <br>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p>O valor <input id="a5" class="col-md-2"
+                                            type="number" /> <strong class="text-lg">menos</strong> <input id="b5" class="col-md-2"
+                                            type="number" />% &eacute; igual a <span
+                                            class="bg-info text-light" id="result5">0</span></p>
                                 </div>
                             </div>
                         </div>
