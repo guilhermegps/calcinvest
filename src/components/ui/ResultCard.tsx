@@ -1,9 +1,11 @@
 import type { ReactNode } from 'react'
 
+export type ResultTone = 'default' | 'invested' | 'profit' | 'tax' | 'net'
+
 type ResultRow = {
   label: string
   value: ReactNode
-  emphasis?: 'default' | 'success' | 'danger' | 'highlight'
+  tone?: ResultTone
 }
 
 type ResultCardProps = {
@@ -12,11 +14,30 @@ type ResultCardProps = {
   footer?: ReactNode
 }
 
-const valueClass: Record<NonNullable<ResultRow['emphasis']>, string> = {
-  default: 'text-ink dark:text-ink-dark',
-  success: 'text-emerald-600 dark:text-emerald-400',
-  danger: 'text-rose-600 dark:text-rose-400',
-  highlight: 'text-brand-700 dark:text-brand-300',
+const TONE: Record<
+  ResultTone,
+  { value: string; swatch?: string; boxed?: string }
+> = {
+  default: {
+    value: 'text-ink dark:text-ink-dark',
+  },
+  invested: {
+    value: 'text-[#2c9faf] dark:text-[#4ec3d4]',
+    swatch: 'bg-[#36b9cc]',
+  },
+  profit: {
+    value: 'text-[#1a9c6c] dark:text-[#3dd6a0]',
+    swatch: 'bg-[#1cc88a]',
+  },
+  tax: {
+    value: 'text-[#c93a2e] dark:text-[#f07167]',
+    swatch: 'bg-[#e74a3b]',
+  },
+  net: {
+    value: 'text-brand-800 dark:text-brand-200',
+    boxed:
+      'rounded-xl border border-brand-400/50 bg-brand-500/10 px-3 py-2 dark:border-brand-400/40 dark:bg-brand-400/10',
+  },
 }
 
 export function ResultCard({ title, rows, footer }: ResultCardProps) {
@@ -26,17 +47,30 @@ export function ResultCard({ title, rows, footer }: ResultCardProps) {
         {title}
       </h2>
       <dl className="space-y-3">
-        {rows.map((row) => (
-          <div
-            key={row.label}
-            className="flex items-baseline justify-between gap-4 border-b border-border/70 pb-3 last:border-0 last:pb-0 dark:border-border-dark/70"
-          >
-            <dt className="text-sm text-ink-muted dark:text-ink-muted-dark">{row.label}</dt>
-            <dd className={`text-right text-base font-semibold tabular-nums ${valueClass[row.emphasis ?? 'default']}`}>
-              {row.value}
-            </dd>
-          </div>
-        ))}
+        {rows.map((row) => {
+          const tone = TONE[row.tone ?? 'default']
+          return (
+            <div
+              key={row.label}
+              className={[
+                'flex items-center justify-between gap-4 border-b border-border/70 pb-3 last:border-0 last:pb-0 dark:border-border-dark/70',
+                tone.boxed,
+              ]
+                .filter(Boolean)
+                .join(' ')}
+            >
+              <dt className="flex items-center gap-2 text-sm text-ink-muted dark:text-ink-muted-dark">
+                {tone.swatch && (
+                  <span className={`size-2.5 shrink-0 rounded-full ${tone.swatch}`} aria-hidden />
+                )}
+                {row.label}
+              </dt>
+              <dd className={`text-right text-base font-semibold tabular-nums ${tone.value}`}>
+                {row.value}
+              </dd>
+            </div>
+          )
+        })}
       </dl>
       {footer && <div className="mt-5">{footer}</div>}
     </section>

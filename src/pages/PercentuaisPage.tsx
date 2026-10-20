@@ -52,19 +52,19 @@ export function PercentuaisPage() {
 
     switch (tab) {
       case 'quanto':
-        setResult(formatPercent(quantoPorcentoE(nA, nB)))
+        setResult(formatPercent(quantoPorcentoE(nA, nB), 5))
         break
       case 'de':
-        setResult(formatBrl(porcentagemDe(nA, nB)))
+        setResult(formatBrl(porcentagemDe(nA, nB), 2))
         break
       case 'diff':
-        setResult(formatPercent(diferencaPercentual(nA, nB)))
+        setResult(formatPercent(diferencaPercentual(nA, nB), 5))
         break
       case 'somar':
-        setResult(formatBrl(somarPorcentagem(nA, nB)))
+        setResult(formatBrl(somarPorcentagem(nA, nB), 2))
         break
       case 'subtrair':
-        setResult(formatBrl(subtrairPorcentagem(nA, nB)))
+        setResult(formatBrl(subtrairPorcentagem(nA, nB), 2))
         break
     }
   }
@@ -129,7 +129,7 @@ export function PercentuaisPage() {
         </form>
 
         {result !== null && (
-          <ResultCard title="Resultado" rows={[{ label: 'Valor', value: result, emphasis: 'highlight' }]} />
+          <ResultCard title="Resultado" rows={[{ label: 'Valor', value: result, tone: 'net' }]} />
         )}
       </div>
     </div>

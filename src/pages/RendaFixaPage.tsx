@@ -16,7 +16,7 @@ import {
   type PeriodoRendimento,
   type RendaFixaResult,
 } from '@/lib/calculators'
-import { formatMoney, formatPercent, maskPercentInput, parseBrl } from '@/lib/format/brl'
+import { formatMoney, maskPercentInput, parseBrl } from '@/lib/format/brl'
 
 const schema = z
   .object({
@@ -179,43 +179,37 @@ export function RendaFixaPage() {
               title="Resultado"
               rows={[
                 { label: 'Valor total bruto', value: formatMoney(result.valorTotalBruto) },
-                { label: 'Total investido', value: formatMoney(result.totalInvestido) },
+                {
+                  label: 'Total investido',
+                  value: formatMoney(result.totalInvestido),
+                  tone: 'invested',
+                },
                 {
                   label: 'Lucro bruto',
                   value: formatMoney(result.lucroBruto),
-                  emphasis: 'success',
-                },
-                {
-                  label: 'IR pago',
-                  value: formatMoney(result.irPago),
-                  emphasis: 'danger',
+                  tone: 'profit',
                 },
                 {
                   label: 'Lucro líquido',
                   value: formatMoney(result.lucroLiquido),
-                  emphasis: 'success',
+                  tone: 'profit',
+                },
+                {
+                  label: 'Imposto de renda pago',
+                  value: formatMoney(result.irPago),
+                  tone: 'tax',
                 },
                 {
                   label: 'Valor total líquido',
                   value: formatMoney(result.valorTotalLiquido),
-                  emphasis: 'highlight',
-                },
-                {
-                  label: 'Horizonte (dias)',
-                  value: String(result.diasTotais),
+                  tone: 'net',
                 },
               ]}
             />
             <section className="rounded-2xl border border-border bg-surface-elevated p-5 dark:border-border-dark dark:bg-surface-elevated-dark sm:p-6">
-              <h2 className="mb-2 font-display text-2xl font-semibold leading-snug text-ink dark:text-ink-dark">
+              <h2 className="mb-4 font-display text-2xl font-semibold leading-snug text-ink dark:text-ink-dark">
                 Composição do montante
               </h2>
-              <p className="mb-4 text-sm text-ink-muted dark:text-ink-muted-dark">
-                Investimento {formatPercent(
-                  result.totalInvestido.div(result.valorTotalBruto.eq(0) ? 1 : result.valorTotalBruto).mul(100),
-                )}{' '}
-                do bruto
-              </p>
               <MontanteChart
                 investido={result.totalInvestido}
                 rendimento={result.lucroLiquido}

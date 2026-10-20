@@ -224,7 +224,7 @@ export function DarfFiisPage() {
               {
                 label: 'Lucro bruto',
                 value: formatMoney(result.lucroBruto),
-                emphasis: result.lucroBruto.gte(0) ? 'success' : 'danger',
+                tone: result.lucroBruto.gte(0) ? 'profit' : 'tax',
               },
               { label: 'Percentual de lucro', value: formatPercent(result.pctLucro) },
               {
@@ -236,7 +236,7 @@ export function DarfFiisPage() {
                     {
                       label: 'IR devido (20%) / DARF',
                       value: formatMoney(result.irDevido),
-                      emphasis: 'danger' as const,
+                      tone: 'tax' as const,
                     },
                   ]
                 : []),

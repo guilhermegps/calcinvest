@@ -101,9 +101,9 @@ export function CagrPage() {
               {
                 label: 'CAGR — Juros Anual',
                 value: formatPercent(result.cagrPercent),
-                emphasis: 'highlight',
+                tone: 'net',
               },
-              { label: 'Acumulado', value: formatPercent(result.acumuladoPercent), emphasis: 'success' },
+              { label: 'Acumulado', value: formatPercent(result.acumuladoPercent), tone: 'profit' },
               {
                 label: 'Valor final / inicial',
                 value: `${formatBrl(result.vezesInicial)}×`,
