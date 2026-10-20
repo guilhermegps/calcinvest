@@ -16,7 +16,9 @@ export function PageHeader({ eyebrow, title, description, actions }: PageHeaderP
             {eyebrow}
           </p>
         )}
-        <h1 className="font-display text-4xl text-ink sm:text-5xl dark:text-ink-dark">{title}</h1>
+        <h1 className="font-display text-4xl font-semibold leading-snug tracking-normal text-ink sm:text-5xl dark:text-ink-dark">
+          {title}
+        </h1>
         {description && (
           <p className="mt-3 text-base leading-relaxed text-ink-muted dark:text-ink-muted-dark">
             {description}

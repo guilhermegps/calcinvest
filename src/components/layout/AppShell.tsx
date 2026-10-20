@@ -2,6 +2,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { Menu, X, Wallet } from 'lucide-react'
 import { useState } from 'react'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { Disclaimer } from '@/components/ui/Disclaimer'
 
 const navItems = [
   { to: '/', label: 'Início', end: true },
@@ -32,7 +33,7 @@ export function AppShell() {
             <span className="flex size-9 items-center justify-center rounded-xl bg-brand-500 text-white shadow-sm shadow-brand-500/30">
               <Wallet className="size-5" />
             </span>
-            <span className="font-display text-2xl tracking-tight">CalcInvest</span>
+            <span className="text-xl font-semibold tracking-tight">CalcInvest</span>
           </NavLink>
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -76,7 +77,10 @@ export function AppShell() {
       </header>
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-8 sm:px-6 sm:py-10">
-        <Outlet />
+        <div className="space-y-8">
+          <Outlet />
+          <Disclaimer />
+        </div>
       </main>
 
       <footer className="border-t border-border py-6 text-center text-sm text-ink-muted dark:border-border-dark dark:text-ink-muted-dark">

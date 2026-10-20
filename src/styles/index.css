@@ -4,7 +4,7 @@
 
 @theme {
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-display: "Source Serif 4", "Source Serif Pro", ui-serif, Georgia, serif;
 
   --color-brand-50: #eefbfd;
   --color-brand-100: #d5f4fa;

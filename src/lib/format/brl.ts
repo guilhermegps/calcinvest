@@ -35,6 +35,12 @@ export function formatBrl(value: Decimal.Value, fractionDigits = 2): string {
   return `${sign}${withThousands},${decPart.padEnd(fractionDigits, '0')}`
 }
 
+export function formatInt(value: Decimal.Value): string {
+  const num = new Decimal(value)
+
+  return num.toFixed(0);
+}
+
 export function formatMoney(value: Decimal.Value): string {
   return `R$ ${formatBrl(value)}`
 }

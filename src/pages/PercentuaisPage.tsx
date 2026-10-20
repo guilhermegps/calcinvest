@@ -74,7 +74,7 @@ export function PercentuaisPage() {
       <PageHeader
         eyebrow="Ferramenta"
         title="Percentuais"
-        description="Operações básicas de porcentagem para consultas rápidas."
+        description="Calcule relações percentuais do dia a dia em poucos segundos."
       />
 
       <div className="mb-6 flex flex-wrap gap-2">

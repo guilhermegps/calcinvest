@@ -85,7 +85,7 @@ export function DarfFiisPage() {
       <PageHeader
         eyebrow="Ferramenta"
         title="DARF FIIs"
-        description="Estime preço médio de compra, dedo-duro (0,005%) e IR de 20% sobre o lucro."
+        description="Calcule o preço médio das cotas e quanto de imposto pode dever na venda."
       />
 
       <form onSubmit={onSubmit} className="space-y-6">
@@ -101,7 +101,9 @@ export function DarfFiisPage() {
           </Field>
 
           <div className="flex items-center justify-between gap-3">
-            <h2 className="font-display text-2xl text-ink dark:text-ink-dark">Compras</h2>
+            <h2 className="font-display text-2xl font-semibold leading-snug text-ink dark:text-ink-dark">
+              Compras
+            </h2>
             <button
               type="button"
               className={buttonSecondaryClassName}
@@ -173,7 +175,9 @@ export function DarfFiisPage() {
         </section>
 
         <section className="space-y-4 rounded-2xl border border-border bg-surface-elevated p-5 dark:border-border-dark dark:bg-surface-elevated-dark sm:p-6">
-          <h2 className="font-display text-2xl text-ink dark:text-ink-dark">Venda</h2>
+          <h2 className="font-display text-2xl font-semibold leading-snug text-ink dark:text-ink-dark">
+            Venda
+          </h2>
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <Field label="Quantidade" htmlFor="qtdVenda">
               <input

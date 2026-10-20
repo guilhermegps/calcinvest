@@ -85,7 +85,7 @@ export function RendaFixaPage() {
       <PageHeader
         eyebrow="Ferramenta"
         title="Renda Fixa"
-        description="Simule montante bruto e líquido com aportes mensais e tabela regressiva de IR."
+        description="Projete quanto seu dinheiro pode render com juros, aportes e IR regressivo."
       />
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -207,7 +207,7 @@ export function RendaFixaPage() {
               ]}
             />
             <section className="rounded-2xl border border-border bg-surface-elevated p-5 dark:border-border-dark dark:bg-surface-elevated-dark sm:p-6">
-              <h2 className="mb-2 font-display text-2xl text-ink dark:text-ink-dark">
+              <h2 className="mb-2 font-display text-2xl font-semibold leading-snug text-ink dark:text-ink-dark">
                 Composição do montante
               </h2>
               <p className="mb-4 text-sm text-ink-muted dark:text-ink-muted-dark">

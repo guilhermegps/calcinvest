@@ -5,25 +5,25 @@ const tools = [
   {
     to: '/percentuais',
     title: 'Percentuais',
-    description: 'Cinco operações rápidas de porcentagem para o dia a dia.',
+    description: 'Descubra quanto um valor representa de outro, some ou subtraia porcentagens.',
     icon: Percent,
   },
   {
     to: '/renda-fixa',
     title: 'Renda Fixa',
-    description: 'Simule juros compostos, aportes mensais e IR regressivo.',
+    description: 'Projete o montante com juros, aportes mensais e desconto de IR.',
     icon: ChartPie,
   },
   {
     to: '/cagr',
     title: 'CAGR',
-    description: 'Calcule o retorno anualizado entre dois valores no tempo.',
+    description: 'Veja a rentabilidade média anual entre o valor inicial e o final.',
     icon: Calculator,
   },
   {
     to: '/darf-fiis',
     title: 'DARF FIIs',
-    description: 'Estime preço médio, dedo-duro e IR devido na venda de FIIs.',
+    description: 'Calcule preço médio, dedo-duro e quanto de IR pode dever na venda.',
     icon: Receipt,
   },
 ]
@@ -37,33 +37,35 @@ export function HomePage() {
           <p className="mb-3 text-sm font-semibold uppercase tracking-[0.16em] text-brand-600 dark:text-brand-300">
             CalcInvest
           </p>
-          <h1 className="font-display text-5xl leading-tight text-ink sm:text-6xl dark:text-ink-dark">
-            Simule investimentos com clareza.
+          <h1 className="font-display text-4xl font-semibold leading-snug text-ink sm:text-5xl dark:text-ink-dark">
+            Simule seus investimentos com clareza
           </h1>
           <p className="mt-4 text-lg leading-relaxed text-ink-muted dark:text-ink-muted-dark">
-            Ferramentas gratuitas para finanças pessoais e mercado financeiro — modernas,
-            responsivas e 100% no navegador.
+            Compare cenários de renda fixa, porcentagens, retorno anualizado e IR de FIIs — de
+            graça e sem cadastro.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/renda-fixa"
               className="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-sm shadow-brand-500/30 transition hover:bg-brand-600"
             >
-              Começar pela Renda Fixa
+              Simular renda fixa
               <ArrowRight className="size-4" />
             </Link>
             <Link
               to="/sobre"
               className="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-3 text-sm font-semibold text-ink transition hover:border-brand-400 dark:border-border-dark dark:text-ink-dark"
             >
-              Sobre o projeto
+              Saiba mais
             </Link>
           </div>
         </div>
       </section>
 
       <section>
-        <h2 className="mb-6 font-display text-3xl text-ink dark:text-ink-dark">Ferramentas</h2>
+        <h2 className="mb-6 font-display text-3xl font-semibold leading-snug text-ink dark:text-ink-dark">
+          Ferramentas
+        </h2>
         <div className="grid gap-4 sm:grid-cols-2">
           {tools.map((tool) => (
             <Link
@@ -80,11 +82,6 @@ export function HomePage() {
           ))}
         </div>
       </section>
-
-      <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-900 dark:text-amber-100">
-        Os resultados são estimativas educacionais. Confira sempre com sua corretora ou
-        contador antes de tomar decisões financeiras.
-      </p>
     </div>
   )
 }

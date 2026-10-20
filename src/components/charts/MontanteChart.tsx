@@ -42,7 +42,7 @@ export function MontanteChart({ investido, rendimento, impostos }: MontanteChart
             ))}
           </Pie>
           <Tooltip
-            formatter={(value: number) => formatMoney(value)}
+            formatter={(value) => formatMoney(typeof value === 'number' ? value : Number(value) || 0)}
             contentStyle={{
               borderRadius: 12,
               border: '1px solid #d5e0e5',

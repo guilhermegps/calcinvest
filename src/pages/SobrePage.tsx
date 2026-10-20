@@ -6,21 +6,20 @@ export function SobrePage() {
       <PageHeader
         eyebrow="Site"
         title="Sobre"
-        description="O CalcInvest nasceu para tornar simulações financeiras mais acessíveis e transparentes."
+        description="O CalcInvest ajuda você a simular decisões financeiras com mais transparência."
       />
 
-      <article className="prose-like max-w-3xl space-y-4 rounded-2xl border border-border bg-surface-elevated p-6 text-ink-muted dark:border-border-dark dark:bg-surface-elevated-dark dark:text-ink-muted-dark">
+      <article className="max-w-3xl space-y-4 rounded-2xl border border-border bg-surface-elevated p-6 text-ink-muted dark:border-border-dark dark:bg-surface-elevated-dark dark:text-ink-muted-dark">
         <p>
-          Esta é uma plataforma de cálculos financeiros voltada a quem quer simular situações de
-          finanças pessoais e mercado financeiro — sem cadastro e sem backend.
+          Aqui você encontra calculadoras para finanças pessoais e mercado financeiro: renda fixa,
+          porcentagens, retorno anualizado (CAGR) e estimativa de IR na venda de FIIs.
         </p>
         <p>
-          Escolha a operação desejada, informe os dados e a ferramenta calcula o restante. Os
-          resultados são estimativas educacionais e podem divergir de corretoras ou sistemas oficiais.
+          Escolha a ferramenta, informe os dados e veja o resultado na hora. Não é preciso criar
+          conta. Os valores servem de referência e podem diferir do que sua corretora ou contador
+          apuram.
         </p>
-        <p>
-          Código aberto e contribuições são bem-vindas no repositório do projeto.
-        </p>
+        <p>O projeto é aberto a contribuições no GitHub.</p>
         <p>
           <a
             className="font-medium text-brand-700 underline-offset-2 hover:underline dark:text-brand-300"

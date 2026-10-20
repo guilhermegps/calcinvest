@@ -22,7 +22,9 @@ const valueClass: Record<NonNullable<ResultRow['emphasis']>, string> = {
 export function ResultCard({ title, rows, footer }: ResultCardProps) {
   return (
     <section className="rounded-2xl border border-border bg-surface-elevated p-5 shadow-sm dark:border-border-dark dark:bg-surface-elevated-dark sm:p-6">
-      <h2 className="mb-4 font-display text-2xl text-ink dark:text-ink-dark">{title}</h2>
+      <h2 className="mb-4 font-display text-2xl font-semibold leading-snug text-ink dark:text-ink-dark">
+        {title}
+      </h2>
       <dl className="space-y-3">
         {rows.map((row) => (
           <div

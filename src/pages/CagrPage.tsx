@@ -7,7 +7,7 @@ import { ResultCard } from '@/components/ui/ResultCard'
 import { Field, inputClassName, buttonPrimaryClassName } from '@/components/forms/Field'
 import { MoneyInput } from '@/components/forms/MoneyInput'
 import { calcularCagr, type CagrResult } from '@/lib/calculators'
-import { formatBrl, formatPercent, parseBrl } from '@/lib/format/brl'
+import { formatBrl, formatInt, formatPercent, parseBrl } from '@/lib/format/brl'
 
 const schema = z.object({
   valorInicial: z.string().min(1, 'Informe o valor inicial'),
@@ -54,8 +54,8 @@ export function CagrPage() {
     <div>
       <PageHeader
         eyebrow="Ferramenta"
-        title="CAGR — Juros Anual"
-        description="Calcule a taxa composta anualizada entre um valor inicial e final."
+        title="CAGR — Juros anual"
+        description="Descubra a rentabilidade média ao ano entre o que você investiu e o que tem hoje."
       />
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -97,7 +97,7 @@ export function CagrPage() {
           <ResultCard
             title="Resultado"
             rows={[
-              { label: 'Período (anos)', value: formatBrl(result.periodoAnos, 0) },
+              { label: 'Período (anos)', value: formatInt(result.periodoAnos) },
               {
                 label: 'CAGR — Juros Anual',
                 value: formatPercent(result.cagrPercent),
