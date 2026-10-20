@@ -1,1 +1,9 @@
 .vscode/
+.doc/
+node_modules/
+dist/
+*.local
+.env
+.env.*.local
+.DS_Store
+*.tsbuildinfo
