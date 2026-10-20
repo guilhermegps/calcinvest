@@ -1,102 +1,55 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="guilhermegps" />
+    <meta
+      name="description"
+      content="Calculadora de investimentos online e grátis para simular finanças pessoais e mercado financeiro."
+    />
+    <meta name="google-site-verification" content="wAzlvh7bf-j37C4tarCKLb1WMK8ak2dVJBuJNIsgJ28" />
 
-<head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-143498490-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <meta property="og:title" content="CalcInvest - Calculadora de Investimentos" />
+    <meta property="og:site_name" content="CalcInvest" />
+    <meta property="og:url" content="https://calcinvest.com.br/" />
+    <meta
+      property="og:description"
+      content="Calculadora de investimentos online e grátis para simular finanças pessoais e mercado financeiro."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://calcinvest.com.br/og-image.jpeg" />
 
-    gtag('config', 'UA-143498490-1');
-  </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="author" content="guilhermegps">
-  <meta name="google-site-verification" content="wAzlvh7bf-j37C4tarCKLb1WMK8ak2dVJBuJNIsgJ28" />
-  <meta name="description" content="Uma calculadora de investimentos online e grátis para te ajudar a simular finanças pessoais e mercado financeiro.">
-
-  <meta property="og:title" content="CalcInvest - Calculadora de Investimentos">
-  <meta property="og:site_name" content="CalcInvest">
-  <meta property="og:url" content="https://calcinvest.github.io/">
-  <meta property="og:description" content="Uma calculadora de investimentos online e grátis para te ajudar a simular finanças pessoais e mercado financeiro.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://calcinvest.github.io/img/graphic.jpeg">
-
-  <title>CalcInvest - Calculadora de Investimentos</title>
-
-  <!-- Custom fonts for this template-->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-  <!-- Custom styles for this template-->
-  <link href="css/calc-invest.css" rel="stylesheet">
-
-</head>
-
-<body id="page-top">
-
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <div class="bg-gradient-info" id="loadSidebar"></div>
-
-    <div class="content-menu toggled-btn-menu" onclick="toogleButtonMenu(this)">
-      <button class="rounded-circle border-0" id="burger">
-        <!--<i class="fa fa-chevron-left" aria-hidden="true"></i>-->
-      </button>
-    </div>
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
-        <br>
-
-        <!-- Page -->
-        <div id="loadPage"></div>
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <div id="loadFooter"></div>
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="vendor/jquery-mask-plugin/jquery.mask.min.js"></script>
-  <script src="vendor/jquery-validate/jquery.validate.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-
-  <script src="js/percentuais.js"></script>
-  <script src="js/main.js"></script>
-</body>
-
+    <title>CalcInvest - Calculadora de Investimentos</title>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem('calcinvest-theme')
+          var theme =
+            stored === 'light' || stored === 'dark'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: light)').matches
+                ? 'light'
+                : 'dark'
+          document.documentElement.classList.toggle('dark', theme === 'dark')
+          document.documentElement.dataset.theme = theme
+        } catch (e) {
+          document.documentElement.classList.add('dark')
+          document.documentElement.dataset.theme = 'dark'
+        }
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

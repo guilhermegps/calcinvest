@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-brand-50: #eefbfd;
+  --color-brand-100: #d5f4fa;
+  --color-brand-200: #b0e8f4;
+  --color-brand-300: #79d5eb;
+  --color-brand-400: #3bb8d6;
+  --color-brand-500: #1f9bbb;
+  --color-brand-600: #1d7d9c;
+  --color-brand-700: #1e6580;
+  --color-brand-800: #215469;
+  --color-brand-900: #204659;
+
+  --color-surface: #f4f7f8;
+  --color-surface-elevated: #ffffff;
+  --color-ink: #0f1c22;
+  --color-ink-muted: #5b6b73;
+  --color-border: #d5e0e5;
+
+  --color-surface-dark: #0b1418;
+  --color-surface-elevated-dark: #132028;
+  --color-ink-dark: #e8f1f4;
+  --color-ink-muted-dark: #9bb0ba;
+  --color-border-dark: #243640;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply min-h-dvh bg-surface font-sans text-ink;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgb(31 155 187 / 0.12), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgb(31 155 187 / 0.08), transparent);
+  }
+
+  .dark body {
+    @apply bg-surface-dark text-ink-dark;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgb(59 184 214 / 0.14), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgb(31 125 156 / 0.18), transparent);
+  }
+
+  #root {
+    @apply min-h-dvh;
+  }
+}
