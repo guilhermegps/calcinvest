@@ -1,27 +1,37 @@
 # CalcInvest
-> Esta é uma calculadora de investimentos direcionada para aqueles que tem interesse em simular as diversas situações envolvendo finanças pessoais e mercado financeiro.
 
-![](img/print.png)
+Calculadora de investimentos online e gratuita para simular finanças pessoais e mercado financeiro.
 
-## Como funciona
+## Ferramentas
 
-Trata-se de uma plataforma de calculos financeiros com o único objetivo de permitir que você realize seus calculos de investimento com mais facilidade e transparência.
-Para utilizar a plataforma você só precisará escolher a operação desejada e informar os dados necessários, a plataforma faz todo o resto.
+- **Percentuais** — operações rápidas de porcentagem
+- **Renda Fixa** — juros compostos, aportes mensais e IR regressivo
+- **CAGR** — retorno anualizado composto
+- **DARF FIIs** — preço médio, dedo-duro e estimativa de IR
 
-## Configurando o ambiente de desenvolvimento
+## Stack
 
-Você só precisará de um servidor web. Toda a plataforma se basea apenas em HTML, CSS e Javascript com Jquery.
+React + Vite + TypeScript, Tailwind CSS, React Router, decimal.js, Vitest. Hospedagem estática no GitHub Pages (`calcinvest.com.br`).
+
+## Desenvolvimento
+
+```bash
+npm install
+npm run dev
+```
+
+```bash
+npm test
+npm run build
+npm run preview
+```
+
+Variáveis opcionais (veja `.env.example`):
+
+- `VITE_GA_ID` — ID do Google Analytics 4
 
 ## Contato
 
-Guilherme de Paiva Santos – guilherme.ps20@gmail.com
+Guilherme de Paiva Santos — guilherme.ps20@gmail.com
 
 [github.com/guilhermegps](https://github.com/guilhermegps/)
-
-## Sources
-
-* Template Bootstrap (<http://startbootstrap.com/template-overviews/sb-admin-2>)
-* Template Readme.md (<https://github.com/dbader/readme-template>)
-
-<!-- Projeto Original -->
-[wiki]: https://github.com/guilhermegps/calcinvest
