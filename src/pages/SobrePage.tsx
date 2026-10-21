@@ -23,7 +23,7 @@ export function SobrePage() {
         <p>
           <a
             className="font-medium text-brand-700 underline-offset-2 hover:underline dark:text-brand-300"
-            href="https://github.com/calcinvest/calcinvest.github.io"
+            href="https://github.com/guilhermegps/calcinvest"
             target="_blank"
             rel="noreferrer"
           >
