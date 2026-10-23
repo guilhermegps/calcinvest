@@ -1,5 +1,28 @@
 import Decimal from 'decimal.js'
 
+/** Digits and a single comma. Drops letters, dots and any other symbol. */
+export function sanitizeDecimalCommaInput(raw: string): string {
+  let seenComma = false
+  let out = ''
+  for (const ch of raw) {
+    if (ch >= '0' && ch <= '9') {
+      out += ch
+    } else if (ch === ',' && !seenComma) {
+      seenComma = true
+      out += ch
+    }
+  }
+  return out
+}
+
+/** Empty input is zero. Decimal separator is a comma. */
+export function parseDecimalComma(value: string | null | undefined): Decimal {
+  if (value == null) return new Decimal(0)
+  const normalized = value.trim().replace(',', '.')
+  if (!normalized || normalized === '.') return new Decimal(0)
+  return new Decimal(normalized)
+}
+
 export function parseBrl(value: string | number | null | undefined): Decimal {
   if (value === null || value === undefined || value === '') {
     return new Decimal(0)

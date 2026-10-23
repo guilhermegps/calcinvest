@@ -1,5 +1,12 @@
 import { describe, expect, it } from 'vitest'
-import { formatBrl, maskBrlInput, parseBrl, roundMoney } from './brl'
+import {
+  formatBrl,
+  maskBrlInput,
+  parseBrl,
+  parseDecimalComma,
+  roundMoney,
+  sanitizeDecimalCommaInput,
+} from './brl'
 
 describe('parseBrl', () => {
   it('parses Brazilian formatted strings', () => {
@@ -23,6 +30,29 @@ describe('formatBrl', () => {
 describe('maskBrlInput', () => {
   it('builds currency from digits', () => {
     expect(maskBrlInput('100990')).toBe('1.009,90')
+  })
+})
+
+describe('sanitizeDecimalCommaInput', () => {
+  it('keeps digits and a single comma', () => {
+    expect(sanitizeDecimalCommaInput('12,5')).toBe('12,5')
+    expect(sanitizeDecimalCommaInput('10')).toBe('10')
+    expect(sanitizeDecimalCommaInput('1,2,3')).toBe('1,23')
+  })
+
+  it('drops letters, dots and symbols', () => {
+    expect(sanitizeDecimalCommaInput('abc12,5x')).toBe('12,5')
+    expect(sanitizeDecimalCommaInput('10.50')).toBe('1050')
+    expect(sanitizeDecimalCommaInput('-3')).toBe('3')
+  })
+})
+
+describe('parseDecimalComma', () => {
+  it('parses comma decimals and treats blank as zero', () => {
+    expect(parseDecimalComma('10,5').toNumber()).toBe(10.5)
+    expect(parseDecimalComma('8').toNumber()).toBe(8)
+    expect(parseDecimalComma('').toNumber()).toBe(0)
+    expect(parseDecimalComma(',').toNumber()).toBe(0)
   })
 })
 

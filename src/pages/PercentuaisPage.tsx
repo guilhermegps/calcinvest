@@ -9,7 +9,7 @@ import {
   somarPorcentagem,
   subtrairPorcentagem,
 } from '@/lib/calculators'
-import { formatBrl, formatPercent } from '@/lib/format/brl'
+import { formatBrl, formatPercent, parseDecimalComma, sanitizeDecimalCommaInput } from '@/lib/format/brl'
 
 type TabId = 'quanto' | 'de' | 'diff' | 'somar' | 'subtrair'
 
@@ -26,6 +26,7 @@ export function PercentuaisPage() {
   const [a, setA] = useState('')
   const [b, setB] = useState('')
   const [result, setResult] = useState<string | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   const labels = useMemo(() => {
     switch (tab) {
@@ -43,12 +44,21 @@ export function PercentuaisPage() {
 
   function calcular(e: React.FormEvent) {
     e.preventDefault()
-    const nA = Number(a.replace(',', '.'))
-    const nB = Number(b.replace(',', '.'))
-    if (Number.isNaN(nA) || Number.isNaN(nB)) {
+    const nA = parseDecimalComma(a)
+    const nB = parseDecimalComma(b)
+
+    if (tab === 'quanto' && nB.isZero()) {
       setResult(null)
+      setError('A base precisa ser diferente de zero.')
       return
     }
+    if (tab === 'diff' && nA.isZero()) {
+      setResult(null)
+      setError('O valor inicial precisa ser diferente de zero.')
+      return
+    }
+
+    setError(null)
 
     switch (tab) {
       case 'quanto':
@@ -84,7 +94,10 @@ export function PercentuaisPage() {
             type="button"
             onClick={() => {
               setTab(item.id)
+              setA('')
+              setB('')
               setResult(null)
+              setError(null)
             }}
             className={[
               'rounded-full px-3 py-1.5 text-sm font-medium transition',
@@ -108,9 +121,13 @@ export function PercentuaisPage() {
               id="pct-a"
               className={inputClassName}
               inputMode="decimal"
+              autoComplete="off"
+              placeholder="0"
               value={a}
-              onChange={(e) => setA(e.target.value)}
-              required
+              onChange={(e) => {
+                setA(sanitizeDecimalCommaInput(e.target.value))
+                setError(null)
+              }}
             />
           </Field>
           <Field label={labels.b} htmlFor="pct-b">
@@ -118,11 +135,16 @@ export function PercentuaisPage() {
               id="pct-b"
               className={inputClassName}
               inputMode="decimal"
+              autoComplete="off"
+              placeholder="0"
               value={b}
-              onChange={(e) => setB(e.target.value)}
-              required
+              onChange={(e) => {
+                setB(sanitizeDecimalCommaInput(e.target.value))
+                setError(null)
+              }}
             />
           </Field>
+          {error && <p className="text-sm text-rose-600 dark:text-rose-400">{error}</p>}
           <button type="submit" className={buttonPrimaryClassName}>
             Calcular
           </button>
